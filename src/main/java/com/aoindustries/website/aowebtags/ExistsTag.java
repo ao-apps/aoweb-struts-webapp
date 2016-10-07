@@ -5,7 +5,6 @@
  */
 package com.aoindustries.website.aowebtags;
 
-import com.aoindustries.servlet.http.ServletUtil;
 import java.net.MalformedURLException;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyTagSupport;
@@ -32,7 +31,7 @@ public class ExistsTag extends BodyTagSupport {
 	@Override
 	public int doStartTag() throws JspException {
 		try {
-			return ServletUtil.resourceExists(pageContext.getServletContext(), path) ? EVAL_BODY_INCLUDE : SKIP_BODY;
+			return pageContext.getServletContext().getResource(path) != null ? EVAL_BODY_INCLUDE : SKIP_BODY;
 		} catch(MalformedURLException err) {
 			throw new JspException(err);
 		}

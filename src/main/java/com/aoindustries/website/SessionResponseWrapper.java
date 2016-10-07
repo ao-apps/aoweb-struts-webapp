@@ -47,6 +47,7 @@ public class SessionResponseWrapper extends HttpServletResponseWrapper {
 	 *
 	 * @see  #encodeURL(String)
 	 */
+	@Deprecated
 	@Override
 	public String encodeUrl(String url) {
 		return encodeURL(url);
@@ -100,6 +101,7 @@ public class SessionResponseWrapper extends HttpServletResponseWrapper {
 	 *
 	 * @see  #encodeRedirectURL(String)
 	 */
+	@Deprecated
 	@Override
 	public String encodeRedirectUrl(String url) {
 		return encodeRedirectURL(url);
@@ -151,6 +153,7 @@ public class SessionResponseWrapper extends HttpServletResponseWrapper {
 	/**
 	 * @deprecated
 	 */
+	@Deprecated
 	@Override
 	public void setStatus(int sc, String sm) {
 		super.setStatus(sc, sm);

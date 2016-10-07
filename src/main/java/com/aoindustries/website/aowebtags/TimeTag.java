@@ -25,6 +25,8 @@ public class TimeTag extends BodyTagSupport {
 	 */
 	private static final String SEQUENCE_REQUEST_ATTRIBUTE_NAME = TimeTag.class.getName()+".sequence";
 
+	private static final long serialVersionUID = 1L;
+
 	public TimeTag() {
 	}
 
