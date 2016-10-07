@@ -15,7 +15,7 @@
 	<Parameter name="exception.showError" value="false" />
 
 	<!--
-		Enables the use of xhtml content type for compatbile browser.
+		Enables the use of xhtml content type for compatible browsers.
 		Recommend using true for development and false for production until sites
 		fully validated and debugged.  This defaults to false if missing or not
 		precisely equal to "true".
