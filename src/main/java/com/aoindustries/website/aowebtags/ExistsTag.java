@@ -1,10 +1,10 @@
-package com.aoindustries.website.aowebtags;
-
 /*
- * Copyright 2009 by AO Industries, Inc.,
+ * Copyright 2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.aowebtags;
+
 import com.aoindustries.servlet.http.ServletUtil;
 import java.net.MalformedURLException;
 import javax.servlet.jsp.JspException;
@@ -17,36 +17,38 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
  */
 public class ExistsTag extends BodyTagSupport {
 
-    private String path;
+	private static final long serialVersionUID = 1L;
 
-    public ExistsTag() {
-        init();
-    }
+	private String path;
 
-    private void init() {
-        path = null;
-    }
+	public ExistsTag() {
+		init();
+	}
 
-    @Override
-    public int doStartTag() throws JspException {
-        try {
-            return ServletUtil.resourceExists(pageContext.getServletContext(), path) ? EVAL_BODY_INCLUDE : SKIP_BODY;
-        } catch(MalformedURLException err) {
-            throw new JspException(err);
-        }
-    }
+	private void init() {
+		path = null;
+	}
 
-    @Override
-    public int doEndTag() {
-        init();
-        return EVAL_PAGE;
-    }
+	@Override
+	public int doStartTag() throws JspException {
+		try {
+			return ServletUtil.resourceExists(pageContext.getServletContext(), path) ? EVAL_BODY_INCLUDE : SKIP_BODY;
+		} catch(MalformedURLException err) {
+			throw new JspException(err);
+		}
+	}
 
-    public String getPage() {
-        return path;
-    }
+	@Override
+	public int doEndTag() {
+		init();
+		return EVAL_PAGE;
+	}
 
-    public void setPath(String path) {
-        this.path = path;
-    }
+	public String getPage() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 }

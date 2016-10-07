@@ -1,10 +1,10 @@
-package com.aoindustries.website.clientarea.control.password;
-
 /*
- * Copyright 2000-2009 by AO Industries, Inc.,
+ * Copyright 2000-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.clientarea.control.password;
+
 import com.aoindustries.aoserv.client.AOServConnector;
 import com.aoindustries.aoserv.client.LinuxAccount;
 import com.aoindustries.aoserv.client.PasswordChecker;
@@ -28,100 +28,100 @@ import org.apache.struts.action.ActionMessage;
  */
 public class LinuxAccountPasswordSetterForm extends ActionForm implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private List<String> packages;
-    private List<String> usernames;
-    private List<String> aoServers;
-    private List<String> newPasswords;
-    private List<String> confirmPasswords;
+	private List<String> packages;
+	private List<String> usernames;
+	private List<String> aoServers;
+	private List<String> newPasswords;
+	private List<String> confirmPasswords;
 
-    @Override
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-        super.reset(mapping, request);
-        setPackages(new AutoGrowArrayList<String>());
-        setUsernames(new AutoGrowArrayList<String>());
-        setAoServers(new AutoGrowArrayList<String>());
-        setNewPasswords(new AutoGrowArrayList<String>());
-        setConfirmPasswords(new AutoGrowArrayList<String>());
-    }
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		super.reset(mapping, request);
+		setPackages(new AutoGrowArrayList<String>());
+		setUsernames(new AutoGrowArrayList<String>());
+		setAoServers(new AutoGrowArrayList<String>());
+		setNewPasswords(new AutoGrowArrayList<String>());
+		setConfirmPasswords(new AutoGrowArrayList<String>());
+	}
 
-    public List<String> getPackages() {
-        return packages;
-    }
+	public List<String> getPackages() {
+		return packages;
+	}
 
-    public void setPackages(List<String> packages) {
-        this.packages = packages;
-    }
+	public void setPackages(List<String> packages) {
+		this.packages = packages;
+	}
 
-    public List<String> getUsernames() {
-        return usernames;
-    }
-    
-    public void setUsernames(List<String> usernames) {
-        this.usernames = usernames;
-    }
+	public List<String> getUsernames() {
+		return usernames;
+	}
 
-    public List<String> getAoServers() {
-        return aoServers;
-    }
-    
-    public void setAoServers(List<String> aoServers) {
-        this.aoServers = aoServers;
-    }
+	public void setUsernames(List<String> usernames) {
+		this.usernames = usernames;
+	}
 
-    public List<String> getNewPasswords() {
-        return newPasswords;
-    }
+	public List<String> getAoServers() {
+		return aoServers;
+	}
 
-    public void setNewPasswords(List<String> newPasswords) {
-        this.newPasswords = newPasswords;
-    }
+	public void setAoServers(List<String> aoServers) {
+		this.aoServers = aoServers;
+	}
 
-    public List<String> getConfirmPasswords() {
-        return confirmPasswords;
-    }
+	public List<String> getNewPasswords() {
+		return newPasswords;
+	}
 
-    public void setConfirmPasswords(List<String> confirmPasswords) {
-        this.confirmPasswords = confirmPasswords;
-    }
-    
-    @Override
-    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        try {
-            ActionErrors errors = super.validate(mapping, request);
-            if(errors==null) errors = new ActionErrors();
-            AOServConnector aoConn = AuthenticatedAction.getAoConn(request, null);
-            if(aoConn==null) throw new RuntimeException("aoConn is null");
+	public void setNewPasswords(List<String> newPasswords) {
+		this.newPasswords = newPasswords;
+	}
 
-            for(int c=0;c<usernames.size();c++) {
-                String newPassword = newPasswords.get(c);
-                String confirmPassword = confirmPasswords.get(c);
-                if(!newPassword.equals(confirmPassword)) {
-                    errors.add("confirmPasswords[" + c + "].confirmPasswords", new ActionMessage("password.linuxAccountPasswordSetter.field.confirmPasswords.mismatch"));
-                } else {
-                    if(newPassword.length()>0) {
-                        String username = usernames.get(c);
-                        LinuxAccount la = aoConn.getLinuxAccounts().get(username);
-                        if(la==null) {
-                            throw new AssertionError("Unable to find LinuxAccount: "+username);
-                        } else {
-                            // Check the password strength
-                            List<PasswordChecker.Result> results = LinuxAccount.checkPassword(UserId.valueOf(username), la.getType().getName(), newPassword);
-                            if(PasswordChecker.hasResults(results)) {
-                                errors.add("confirmPasswords[" + c + "].confirmPasswords", new ActionMessage(PasswordChecker.getResultsHtml(results), false));
-                            }
-                        }
-                    }
-                }
-            }
-            return errors;
-        } catch(IOException err) {
-            throw new WrappedException(err);
-        } catch(SQLException err) {
-            throw new WrappedException(err);
-        } catch(ValidationException err) {
-            throw new WrappedException(err);
-        }
-    }
+	public List<String> getConfirmPasswords() {
+		return confirmPasswords;
+	}
+
+	public void setConfirmPasswords(List<String> confirmPasswords) {
+		this.confirmPasswords = confirmPasswords;
+	}
+
+	@Override
+	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			ActionErrors errors = super.validate(mapping, request);
+			if(errors==null) errors = new ActionErrors();
+			AOServConnector aoConn = AuthenticatedAction.getAoConn(request, null);
+			if(aoConn==null) throw new RuntimeException("aoConn is null");
+
+			for(int c=0;c<usernames.size();c++) {
+				String newPassword = newPasswords.get(c);
+				String confirmPassword = confirmPasswords.get(c);
+				if(!newPassword.equals(confirmPassword)) {
+					errors.add("confirmPasswords[" + c + "].confirmPasswords", new ActionMessage("password.linuxAccountPasswordSetter.field.confirmPasswords.mismatch"));
+				} else {
+					if(newPassword.length()>0) {
+						String username = usernames.get(c);
+						LinuxAccount la = aoConn.getLinuxAccounts().get(username);
+						if(la==null) {
+							throw new AssertionError("Unable to find LinuxAccount: "+username);
+						} else {
+							// Check the password strength
+							List<PasswordChecker.Result> results = LinuxAccount.checkPassword(UserId.valueOf(username), la.getType().getName(), newPassword);
+							if(PasswordChecker.hasResults(results)) {
+								errors.add("confirmPasswords[" + c + "].confirmPasswords", new ActionMessage(PasswordChecker.getResultsHtml(results), false));
+							}
+						}
+					}
+				}
+			}
+			return errors;
+		} catch(IOException err) {
+			throw new WrappedException(err);
+		} catch(SQLException err) {
+			throw new WrappedException(err);
+		} catch(ValidationException err) {
+			throw new WrappedException(err);
+		}
+	}
 }

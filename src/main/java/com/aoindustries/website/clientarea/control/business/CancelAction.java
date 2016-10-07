@@ -1,10 +1,10 @@
-package com.aoindustries.website.clientarea.control.business;
-
 /*
- * Copyright 2003-2009 by AO Industries, Inc.,
+ * Copyright 2003-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.clientarea.control.business;
+
 import com.aoindustries.aoserv.client.AOServConnector;
 import com.aoindustries.aoserv.client.AOServPermission;
 import com.aoindustries.aoserv.client.Business;
@@ -27,26 +27,27 @@ import org.apache.struts.action.ActionMapping;
  */
 public class CancelAction  extends PermissionAction {
 
-    @Override
-    public ActionForward executePermissionGranted(
-        ActionMapping mapping,
-        ActionForm form,
-        HttpServletRequest request,
-        HttpServletResponse response,
-        SiteSettings siteSettings,
-        Locale locale,
-        Skin skin,
-        AOServConnector aoConn
-    ) throws Exception {
-        List<Business> businesses = aoConn.getBusinesses().getRows();
+	@Override
+	public ActionForward executePermissionGranted(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		SiteSettings siteSettings,
+		Locale locale,
+		Skin skin,
+		AOServConnector aoConn
+	) throws Exception {
+		List<Business> businesses = aoConn.getBusinesses().getRows();
 
-        // Set request values
-        request.setAttribute("businesses", businesses);
+		// Set request values
+		request.setAttribute("businesses", businesses);
 
-        return mapping.findForward("success");
-    }
+		return mapping.findForward("success");
+	}
 
-    public List<AOServPermission.Permission> getPermissions() {
-        return Collections.singletonList(AOServPermission.Permission.cancel_business);
-    }
+	@Override
+	public List<AOServPermission.Permission> getPermissions() {
+		return Collections.singletonList(AOServPermission.Permission.cancel_business);
+	}
 }

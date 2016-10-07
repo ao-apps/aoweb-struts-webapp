@@ -1,5 +1,5 @@
 /*
- * Copyright 2009, 2015 by AO Industries, Inc.,
+ * Copyright 2009, 2015, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
@@ -26,10 +26,12 @@ public class NoDirectJspFilter implements Filter {
 
 	private ServletContext servletContext;
 
+	@Override
 	public void init(FilterConfig config) {
 		servletContext = config.getServletContext();
 	}
 
+	@Override
 	public void doFilter(
 		ServletRequest request,
 		ServletResponse response,
@@ -58,6 +60,7 @@ public class NoDirectJspFilter implements Filter {
 		}
 	}
 
+	@Override
 	public void destroy() {
 		servletContext = null;
 	}

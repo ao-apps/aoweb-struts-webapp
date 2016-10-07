@@ -1,10 +1,10 @@
-package com.aoindustries.website.clientarea.control.password;
-
 /*
- * Copyright 2000-2009 by AO Industries, Inc.,
+ * Copyright 2000-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.clientarea.control.password;
+
 import com.aoindustries.aoserv.client.AOServConnector;
 import com.aoindustries.aoserv.client.AOServPermission;
 import com.aoindustries.aoserv.client.BusinessAdministrator;
@@ -29,43 +29,43 @@ import org.apache.struts.action.ActionMapping;
  */
 public class BusinessAdministratorPasswordSetterAction extends AuthenticatedAction {
 
-    @Override
-    public ActionForward execute(
-        ActionMapping mapping,
-        ActionForm form,
-        HttpServletRequest request,
-        HttpServletResponse response,
-        SiteSettings siteSettings,
-        Locale locale,
-        Skin skin,
-        AOServConnector aoConn
-    ) throws Exception {
-        BusinessAdministratorPasswordSetterForm businessAdministratorPasswordSetterForm = (BusinessAdministratorPasswordSetterForm)form;
+	@Override
+	public ActionForward execute(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		SiteSettings siteSettings,
+		Locale locale,
+		Skin skin,
+		AOServConnector aoConn
+	) throws Exception {
+		BusinessAdministratorPasswordSetterForm businessAdministratorPasswordSetterForm = (BusinessAdministratorPasswordSetterForm)form;
 
-        BusinessAdministrator thisBA = aoConn.getThisBusinessAdministrator();
-        
-        List<BusinessAdministrator> bas = thisBA.hasPermission(AOServPermission.Permission.set_business_administrator_password) ? aoConn.getBusinessAdministrators().getRows() : Collections.singletonList(thisBA);
+		BusinessAdministrator thisBA = aoConn.getThisBusinessAdministrator();
 
-        List<String> packages = new ArrayList<String>(bas.size());
-        List<String> usernames = new ArrayList<String>(bas.size());
-        List<String> newPasswords = new ArrayList<String>(bas.size());
-        List<String> confirmPasswords = new ArrayList<String>(bas.size());
-        for(BusinessAdministrator ba : bas) {
-            if(ba.canSetPassword()) {
-                Username un = ba.getUsername();
-                packages.add(un.getPackage().getName());
-                usernames.add(un.getUsername());
-                newPasswords.add("");
-                confirmPasswords.add("");
-            }
-        }
+		List<BusinessAdministrator> bas = thisBA.hasPermission(AOServPermission.Permission.set_business_administrator_password) ? aoConn.getBusinessAdministrators().getRows() : Collections.singletonList(thisBA);
 
-        // Store to the form
-        businessAdministratorPasswordSetterForm.setPackages(packages);
-        businessAdministratorPasswordSetterForm.setUsernames(usernames);
-        businessAdministratorPasswordSetterForm.setNewPasswords(newPasswords);
-        businessAdministratorPasswordSetterForm.setConfirmPasswords(confirmPasswords);
+		List<String> packages = new ArrayList<String>(bas.size());
+		List<String> usernames = new ArrayList<String>(bas.size());
+		List<String> newPasswords = new ArrayList<String>(bas.size());
+		List<String> confirmPasswords = new ArrayList<String>(bas.size());
+		for(BusinessAdministrator ba : bas) {
+			if(ba.canSetPassword()) {
+				Username un = ba.getUsername();
+				packages.add(un.getPackage().getName());
+				usernames.add(un.getUsername());
+				newPasswords.add("");
+				confirmPasswords.add("");
+			}
+		}
 
-        return mapping.findForward("success");
-    }
+		// Store to the form
+		businessAdministratorPasswordSetterForm.setPackages(packages);
+		businessAdministratorPasswordSetterForm.setUsernames(usernames);
+		businessAdministratorPasswordSetterForm.setNewPasswords(newPasswords);
+		businessAdministratorPasswordSetterForm.setConfirmPasswords(confirmPasswords);
+
+		return mapping.findForward("success");
+	}
 }

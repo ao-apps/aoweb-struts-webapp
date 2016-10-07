@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2009, 2015 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2015, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
@@ -73,9 +73,9 @@ public class LoginCompletedAction extends SkinAction {
 			String message=err.getMessage();
 			if(message!=null) {
 				MessageResources applicationResources = (MessageResources)request.getAttribute("/ApplicationResources");
-				if(message.indexOf("Unable to find BusinessAdministrator")!=-1) message=applicationResources.getMessage(locale, "login.accountNotFound");
-				else if(message.indexOf("Connection attempted with invalid password")!=-1) message=applicationResources.getMessage(locale, "login.badPassword");
-				else if(message.indexOf("BusinessAdministrator disabled")!=-1) message=applicationResources.getMessage(locale, "accountDisabled");
+				if(message.contains("Unable to find BusinessAdministrator")) message=applicationResources.getMessage(locale, "login.accountNotFound");
+				else if(message.contains("Connection attempted with invalid password")) message=applicationResources.getMessage(locale, "login.badPassword");
+				else if(message.contains("BusinessAdministrator disabled")) message=applicationResources.getMessage(locale, "accountDisabled");
 				else message=null;
 			}
 			if(message!=null) request.setAttribute(Constants.AUTHENTICATION_MESSAGE, message);

@@ -1,10 +1,10 @@
-package com.aoindustries.website.clientarea.ticket;
-
 /*
- * Copyright 2000-2009 by AO Industries, Inc.,
+ * Copyright 2000-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.clientarea.ticket;
+
 import com.aoindustries.aoserv.client.AOServConnector;
 import com.aoindustries.aoserv.client.AOServPermission;
 import com.aoindustries.aoserv.client.Business;
@@ -33,56 +33,57 @@ import org.apache.struts.action.ActionMessages;
  */
 public class CreateCompletedAction extends PermissionAction {
 
-    @Override
-    public ActionForward executePermissionGranted(
-        ActionMapping mapping,
-        ActionForm form,
-        HttpServletRequest request,
-        HttpServletResponse response,
-        SiteSettings siteSettings,
-        Locale locale,
-        Skin skin,
-        AOServConnector aoConn
-    ) throws Exception {
-        TicketForm ticketForm = (TicketForm)form;
+	@Override
+	public ActionForward executePermissionGranted(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		SiteSettings siteSettings,
+		Locale locale,
+		Skin skin,
+		AOServConnector aoConn
+	) throws Exception {
+		TicketForm ticketForm = (TicketForm)form;
 
-        // Validation
-        ActionMessages errors = ticketForm.validate(mapping, request);
-        if(errors!=null && !errors.isEmpty()) {
-            saveErrors(request, errors);
-            return mapping.findForward("input");
-        }
+		// Validation
+		ActionMessages errors = ticketForm.validate(mapping, request);
+		if(errors!=null && !errors.isEmpty()) {
+			saveErrors(request, errors);
+			return mapping.findForward("input");
+		}
 
-        Business business = aoConn.getBusinesses().get(AccountingCode.valueOf(ticketForm.getAccounting()));
-        if(business==null) throw new SQLException("Unable to find Business: "+ticketForm.getAccounting());
-        Language language = aoConn.getLanguages().get(locale.getLanguage());
-        if(language==null) {
-            language = aoConn.getLanguages().get(Language.EN);
-            if(language==null) throw new SQLException("Unable to find Language: "+Language.EN);
-        }
-        TicketType ticketType = aoConn.getTicketTypes().get(TicketType.SUPPORT);
-        if(ticketType==null) throw new SQLException("Unable to find TicketType: "+TicketType.SUPPORT);
-        TicketPriority clientPriority = aoConn.getTicketPriorities().get(ticketForm.getClientPriority());
-        if(clientPriority==null) throw new SQLException("Unable to find TicketPriority: "+ticketForm.getClientPriority());
-        int pkey = aoConn.getTickets().addTicket(
-            siteSettings.getBrand(),
-            business,
-            language,
-            null,
-            ticketType,
-            null,
-            ticketForm.getSummary(),
-            ticketForm.getDetails(),
-            clientPriority,
-            ticketForm.getContactEmails(),
-            ticketForm.getContactPhoneNumbers()
-        );
-        request.setAttribute("pkey", pkey);
+		Business business = aoConn.getBusinesses().get(AccountingCode.valueOf(ticketForm.getAccounting()));
+		if(business==null) throw new SQLException("Unable to find Business: "+ticketForm.getAccounting());
+		Language language = aoConn.getLanguages().get(locale.getLanguage());
+		if(language==null) {
+			language = aoConn.getLanguages().get(Language.EN);
+			if(language==null) throw new SQLException("Unable to find Language: "+Language.EN);
+		}
+		TicketType ticketType = aoConn.getTicketTypes().get(TicketType.SUPPORT);
+		if(ticketType==null) throw new SQLException("Unable to find TicketType: "+TicketType.SUPPORT);
+		TicketPriority clientPriority = aoConn.getTicketPriorities().get(ticketForm.getClientPriority());
+		if(clientPriority==null) throw new SQLException("Unable to find TicketPriority: "+ticketForm.getClientPriority());
+		int pkey = aoConn.getTickets().addTicket(
+			siteSettings.getBrand(),
+			business,
+			language,
+			null,
+			ticketType,
+			null,
+			ticketForm.getSummary(),
+			ticketForm.getDetails(),
+			clientPriority,
+			ticketForm.getContactEmails(),
+			ticketForm.getContactPhoneNumbers()
+		);
+		request.setAttribute("pkey", pkey);
 
-        return mapping.findForward("success");
-    }
+		return mapping.findForward("success");
+	}
 
-    public List<AOServPermission.Permission> getPermissions() {
-        return Collections.singletonList(AOServPermission.Permission.add_ticket);
-    }
+	@Override
+	public List<AOServPermission.Permission> getPermissions() {
+		return Collections.singletonList(AOServPermission.Permission.add_ticket);
+	}
 }

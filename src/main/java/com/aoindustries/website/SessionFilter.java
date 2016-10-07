@@ -1,10 +1,10 @@
-package com.aoindustries.website;
-
 /*
- * Copyright 2007-2009 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website;
+
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -28,32 +28,35 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SessionFilter implements Filter {
 
-    public void init(FilterConfig config) {
-    }
+	@Override
+	public void init(FilterConfig config) {
+	}
 
-    public void doFilter(
-        ServletRequest request,
-        ServletResponse response,
-        FilterChain chain
-    ) throws IOException, ServletException {
-        HttpServletRequest httpRequest = (HttpServletRequest)request;
-        SessionResponseWrapper myresponse = new SessionResponseWrapper(httpRequest, (HttpServletResponse)response);
-        SessionRequestWrapper myrequest = new SessionRequestWrapper(httpRequest, myresponse);
-        chain.doFilter(myrequest, myresponse);
-        // Could improve the efficiency by removing temporary sessions proactively here
-        /*
-        // The only time we keep the session data is when the user is logged-in or supports cookie-based sessions
-        HttpSession session = myrequest.getSession(false);
-        if(session!=null) {
-            if(session.isNew()...
-            try {
-                session.invalidate();
-            } catch(IllegalStateException err) {
-                // Ignore this because the session could have been already invalidated
-            }
-        }*/
-    }
+	@Override
+	public void doFilter(
+		ServletRequest request,
+		ServletResponse response,
+		FilterChain chain
+	) throws IOException, ServletException {
+		HttpServletRequest httpRequest = (HttpServletRequest)request;
+		SessionResponseWrapper myresponse = new SessionResponseWrapper(httpRequest, (HttpServletResponse)response);
+		SessionRequestWrapper myrequest = new SessionRequestWrapper(httpRequest, myresponse);
+		chain.doFilter(myrequest, myresponse);
+		// Could improve the efficiency by removing temporary sessions proactively here
+		/*
+		// The only time we keep the session data is when the user is logged-in or supports cookie-based sessions
+		HttpSession session = myrequest.getSession(false);
+		if(session!=null) {
+			if(session.isNew()...
+			try {
+				session.invalidate();
+			} catch(IllegalStateException err) {
+				// Ignore this because the session could have been already invalidated
+			}
+		}*/
+	}
 
-    public void destroy() {
-    }
+	@Override
+	public void destroy() {
+	}
 }

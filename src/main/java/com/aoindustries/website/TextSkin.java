@@ -52,10 +52,12 @@ public class TextSkin extends Skin {
 
 	protected TextSkin() {}
 
+	@Override
 	public String getName() {
 		return "Text";
 	}
 
+	@Override
 	public String getDisplay(HttpServletRequest req) throws JspException {
 		HttpSession session = req.getSession();
 		Locale locale = (Locale)session.getAttribute(Globals.LOCALE_KEY);
@@ -107,6 +109,7 @@ public class TextSkin extends Skin {
 		return resources;
 	}
 
+	@Override
 	public void startSkin(HttpServletRequest req, HttpServletResponse resp, JspWriter out, PageAttributes pageAttributes) throws JspException {
 		try {
 			String layout = pageAttributes.getLayout();
@@ -487,6 +490,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void startContent(HttpServletRequest req, HttpServletResponse resp, JspWriter out, PageAttributes pageAttributes, int[] colspans, String width) throws JspException {
 		try {
 			out.print("          <table cellpadding='0' cellspacing='0'");
@@ -515,6 +519,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void printContentTitle(HttpServletRequest req, HttpServletResponse resp, JspWriter out, String title, int colspan) throws JspException {
 		try {
 			startContentLine(req, resp, out, colspan, "center", null);
@@ -527,6 +532,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void startContentLine(HttpServletRequest req, HttpServletResponse resp, JspWriter out, int colspan, String align, String width) throws JspException {
 		try {
 			out.print("            <tr>\n"
@@ -553,6 +559,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void printContentVerticalDivider(HttpServletRequest req, HttpServletResponse resp, JspWriter out, boolean visible, int colspan, int rowspan, String align, String width) throws JspException {
 		try {
 			out.print("              </td>\n");
@@ -585,6 +592,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void endContentLine(HttpServletRequest req, HttpServletResponse resp, JspWriter out, int rowspan, boolean endsInternal) throws JspException {
 		try {
 			out.print("              </td>\n"
@@ -594,6 +602,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void printContentHorizontalDivider(HttpServletRequest req, HttpServletResponse resp, JspWriter out, int[] colspansAndDirections, boolean endsInternal) throws JspException {
 		try {
 			out.print("            <tr>\n");
@@ -629,6 +638,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void endContent(HttpServletRequest req, HttpServletResponse resp, JspWriter out, PageAttributes pageAttributes, int[] colspans) throws JspException {
 		try {
 			int totalColumns=0;
@@ -661,6 +671,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void endSkin(HttpServletRequest req, HttpServletResponse resp, JspWriter out, PageAttributes pageAttributes) throws JspException {
 		try {
 			out.print("        </td>\n"
@@ -710,6 +721,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void beginLightArea(HttpServletRequest req, HttpServletResponse resp, JspWriter out, String width, boolean nowrap) throws JspException {
 		try {
 			out.print("<table style='border:5px outset #a0a0a0;");
@@ -734,6 +746,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void endLightArea(HttpServletRequest req, HttpServletResponse resp, JspWriter out) throws JspException {
 		try {
 			out.print("</td>\n"
@@ -744,6 +757,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void beginWhiteArea(HttpServletRequest req, HttpServletResponse resp, JspWriter out, String width, boolean nowrap) throws JspException {
 		try {
 			out.print("<table style='border:5px outset #a0a0a0;");
@@ -768,6 +782,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void endWhiteArea(HttpServletRequest req, HttpServletResponse resp, JspWriter out) throws JspException {
 		try {
 			out.print("</td>\n"
@@ -778,6 +793,7 @@ public class TextSkin extends Skin {
 		}
 	}
 
+	@Override
 	public void printAutoIndex(HttpServletRequest req, HttpServletResponse resp, JspWriter out, PageAttributes pageAttributes) throws JspException {
 		try {
 			String urlBase = getUrlBase(req);
@@ -837,6 +853,7 @@ public class TextSkin extends Skin {
 	 *
 	 * @see  #defaultBeginPopupGroup(javax.servlet.http.HttpServletRequest, javax.servlet.jsp.JspWriter, long)
 	 */
+	@Override
 	public void beginPopupGroup(HttpServletRequest req, JspWriter out, long groupId) throws JspException {
 		defaultBeginPopupGroup(req, out, groupId);
 	}
@@ -888,6 +905,7 @@ public class TextSkin extends Skin {
 	 *
 	 * @see  #defaultEndPopupGroup(javax.servlet.http.HttpServletRequest, javax.servlet.jsp.JspWriter, long)
 	 */
+	@Override
 	public void endPopupGroup(HttpServletRequest req, JspWriter out, long groupId) throws JspException {
 		defaultEndPopupGroup(req, out, groupId);
 	}
@@ -904,6 +922,7 @@ public class TextSkin extends Skin {
 	 *
 	 * @see  #defaultBeginPopup(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.jsp.JspWriter, long, long, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void beginPopup(HttpServletRequest req, HttpServletResponse resp, JspWriter out, long groupId, long popupId, String width) throws JspException {
 		defaultBeginPopup(req, resp, out, groupId, popupId, width, getUrlBase(req));
 	}
@@ -1011,6 +1030,7 @@ public class TextSkin extends Skin {
 	 *
 	 * @see  #defaultPrintPopupClose(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.jsp.JspWriter, long, long, java.lang.String)
 	 */
+	@Override
 	public void printPopupClose(HttpServletRequest req, HttpServletResponse resp, JspWriter out, long groupId, long popupId) throws JspException {
 		defaultPrintPopupClose(req, resp, out, groupId, popupId, getUrlBase(req));
 	}
@@ -1048,6 +1068,7 @@ public class TextSkin extends Skin {
 	 *
 	 * @see  #defaultEndPopup(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.jsp.JspWriter, long, long, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void endPopup(HttpServletRequest req, HttpServletResponse resp, JspWriter out, long groupId, long popupId, String width) throws JspException {
 		TextSkin.defaultEndPopup(req, resp, out, groupId, popupId, width, getUrlBase(req));
 	}

@@ -1,10 +1,9 @@
-package com.aoindustries.website;
-
 /*
- * Copyright 2009 by AO Industries, Inc.,
+ * Copyright 2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website;
 
 /**
  * It order to minimize the chance of jsessionid being sent to search engines,
@@ -15,9 +14,9 @@ package com.aoindustries.website;
  */
 public interface SessionActionForm {
 
-    /**
-     * Indicates this form is empty, meaning that a default instance may be used
-     * in its place with no consequences.
-     */
-    boolean isEmpty();
+	/**
+	 * Indicates this form is empty, meaning that a default instance may be used
+	 * in its place with no consequences.
+	 */
+	boolean isEmpty();
 }

@@ -1,10 +1,10 @@
-package com.aoindustries.website.skintags;
-
 /*
- * Copyright 2007-2009 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.skintags;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
@@ -17,42 +17,44 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
  */
 abstract public class PageAttributesBodyTag extends BodyTagSupport {
 
-    public PageAttributesBodyTag() {
-    }
+	private static final long serialVersionUID = 1L;
 
-    static PageAttributes getPageAttributes(PageContext pageContext) {
-        PageAttributes pageAttributes = (PageAttributes)pageContext.getAttribute(PageAttributes.ATTRIBUTE_KEY, PageAttributes.ATTRIBUTE_SCOPE);
-        if(pageAttributes==null) {
-            pageAttributes = new PageAttributes((HttpServletRequest)pageContext.getRequest());
-            pageContext.setAttribute(PageAttributes.ATTRIBUTE_KEY, pageAttributes, PageAttributes.ATTRIBUTE_SCOPE);
-        }
-        return pageAttributes;
-    }
+	public PageAttributesBodyTag() {
+	}
 
-    @Override
-    final public int doStartTag() throws JspException {
-        return doStartTag(getPageAttributes(pageContext));
-    }
+	static PageAttributes getPageAttributes(PageContext pageContext) {
+		PageAttributes pageAttributes = (PageAttributes)pageContext.getAttribute(PageAttributes.ATTRIBUTE_KEY, PageAttributes.ATTRIBUTE_SCOPE);
+		if(pageAttributes==null) {
+			pageAttributes = new PageAttributes((HttpServletRequest)pageContext.getRequest());
+			pageContext.setAttribute(PageAttributes.ATTRIBUTE_KEY, pageAttributes, PageAttributes.ATTRIBUTE_SCOPE);
+		}
+		return pageAttributes;
+	}
 
-    public int doStartTag(PageAttributes pageAttributes) throws JspException {
-        return EVAL_BODY_BUFFERED;
-    }
+	@Override
+	final public int doStartTag() throws JspException {
+		return doStartTag(getPageAttributes(pageContext));
+	}
 
-    /*
-    final public int doAfterBody() throws JspException {
-        return doAfterBody(getPageAttributes());
-    }
+	public int doStartTag(PageAttributes pageAttributes) throws JspException {
+		return EVAL_BODY_BUFFERED;
+	}
 
-    public int doAfterBody(PageAttributes pageAttributes) throws JspException {
-        return SKIP_BODY;
-    }*/
+	/*
+	final public int doAfterBody() throws JspException {
+		return doAfterBody(getPageAttributes());
+	}
 
-    @Override
-    final public int doEndTag() throws JspException {
-        return doEndTag(getPageAttributes(pageContext));
-    }
+	public int doAfterBody(PageAttributes pageAttributes) throws JspException {
+		return SKIP_BODY;
+	}*/
 
-    public int doEndTag(PageAttributes pageAttributes) throws JspException {
-        return EVAL_PAGE;
-    }
+	@Override
+	final public int doEndTag() throws JspException {
+		return doEndTag(getPageAttributes(pageContext));
+	}
+
+	public int doEndTag(PageAttributes pageAttributes) throws JspException {
+		return EVAL_PAGE;
+	}
 }

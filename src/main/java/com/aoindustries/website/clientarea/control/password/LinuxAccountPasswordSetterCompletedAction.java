@@ -1,10 +1,10 @@
-package com.aoindustries.website.clientarea.control.password;
-
 /*
- * Copyright 2000-2009 by AO Industries, Inc.,
+ * Copyright 2000-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.clientarea.control.password;
+
 import com.aoindustries.aoserv.client.AOServConnector;
 import com.aoindustries.aoserv.client.AOServPermission;
 import com.aoindustries.aoserv.client.AOServer;
@@ -31,57 +31,58 @@ import org.apache.struts.action.ActionMessages;
  */
 public class LinuxAccountPasswordSetterCompletedAction extends PermissionAction {
 
-    @Override
-    public ActionForward executePermissionGranted(
-        ActionMapping mapping,
-        ActionForm form,
-        HttpServletRequest request,
-        HttpServletResponse response,
-        SiteSettings siteSettings,
-        Locale locale,
-        Skin skin,
-        AOServConnector aoConn
-    ) throws Exception {
-        LinuxAccountPasswordSetterForm linuxAccountPasswordSetterForm = (LinuxAccountPasswordSetterForm)form;
+	@Override
+	public ActionForward executePermissionGranted(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		SiteSettings siteSettings,
+		Locale locale,
+		Skin skin,
+		AOServConnector aoConn
+	) throws Exception {
+		LinuxAccountPasswordSetterForm linuxAccountPasswordSetterForm = (LinuxAccountPasswordSetterForm)form;
 
-        // Validation
-        ActionMessages errors = linuxAccountPasswordSetterForm.validate(mapping, request);
-        if(errors!=null && !errors.isEmpty()) {
-            saveErrors(request, errors);
-            return mapping.findForward("input");
-        }
+		// Validation
+		ActionMessages errors = linuxAccountPasswordSetterForm.validate(mapping, request);
+		if(errors!=null && !errors.isEmpty()) {
+			saveErrors(request, errors);
+			return mapping.findForward("input");
+		}
 
-        // Reset passwords here and clear the passwords from the form
-        ActionMessages messages = new ActionMessages();
-        List<String> usernames = linuxAccountPasswordSetterForm.getUsernames();
-        List<String> aoServers = linuxAccountPasswordSetterForm.getAoServers();
-        List<String> newPasswords = linuxAccountPasswordSetterForm.getNewPasswords();
-        List<String> confirmPasswords = linuxAccountPasswordSetterForm.getConfirmPasswords();
-        for(int c=0;c<usernames.size();c++) {
-            String newPassword = newPasswords.get(c);
-            if(newPassword.length()>0) {
-                String username = usernames.get(c);
-                LinuxAccount la = aoConn.getLinuxAccounts().get(username);
-                if(la==null) throw new SQLException("Unable to find LinuxAccount: "+username);
-                String hostname = aoServers.get(c);
-                Server server = aoConn.getServers().get(hostname);
-                if(server==null) throw new SQLException("Unable to find Server: "+server);
-                AOServer aoServer = server.getAOServer();
-                if(aoServer==null) throw new SQLException("Unable to find AOServer: "+aoServer);
-                LinuxServerAccount lsa = la.getLinuxServerAccount(aoServer);
-                if(lsa==null) throw new SQLException("Unable to find LinuxServerAccount: "+username+" on "+hostname);
-                lsa.setPassword(newPassword);
-                messages.add("confirmPasswords[" + c + "].confirmPasswords", new ActionMessage("password.linuxAccountPasswordSetter.field.confirmPasswords.passwordReset"));
-                newPasswords.set(c, "");
-                confirmPasswords.set(c, "");
-            }
-        }
-        saveMessages(request, messages);
+		// Reset passwords here and clear the passwords from the form
+		ActionMessages messages = new ActionMessages();
+		List<String> usernames = linuxAccountPasswordSetterForm.getUsernames();
+		List<String> aoServers = linuxAccountPasswordSetterForm.getAoServers();
+		List<String> newPasswords = linuxAccountPasswordSetterForm.getNewPasswords();
+		List<String> confirmPasswords = linuxAccountPasswordSetterForm.getConfirmPasswords();
+		for(int c=0;c<usernames.size();c++) {
+			String newPassword = newPasswords.get(c);
+			if(newPassword.length()>0) {
+				String username = usernames.get(c);
+				LinuxAccount la = aoConn.getLinuxAccounts().get(username);
+				if(la==null) throw new SQLException("Unable to find LinuxAccount: "+username);
+				String hostname = aoServers.get(c);
+				Server server = aoConn.getServers().get(hostname);
+				if(server==null) throw new SQLException("Unable to find Server: "+server);
+				AOServer aoServer = server.getAOServer();
+				if(aoServer==null) throw new SQLException("Unable to find AOServer: "+aoServer);
+				LinuxServerAccount lsa = la.getLinuxServerAccount(aoServer);
+				if(lsa==null) throw new SQLException("Unable to find LinuxServerAccount: "+username+" on "+hostname);
+				lsa.setPassword(newPassword);
+				messages.add("confirmPasswords[" + c + "].confirmPasswords", new ActionMessage("password.linuxAccountPasswordSetter.field.confirmPasswords.passwordReset"));
+				newPasswords.set(c, "");
+				confirmPasswords.set(c, "");
+			}
+		}
+		saveMessages(request, messages);
 
-        return mapping.findForward("success");
-    }
+		return mapping.findForward("success");
+	}
 
-    public List<AOServPermission.Permission> getPermissions() {
-        return Collections.singletonList(AOServPermission.Permission.set_linux_server_account_password);
-    }
+	@Override
+	public List<AOServPermission.Permission> getPermissions() {
+		return Collections.singletonList(AOServPermission.Permission.set_linux_server_account_password);
+	}
 }

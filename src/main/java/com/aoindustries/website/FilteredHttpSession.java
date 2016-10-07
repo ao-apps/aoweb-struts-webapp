@@ -1,10 +1,10 @@
-package com.aoindustries.website;
-
 /*
- * Copyright 2009 by AO Industries, Inc.,
+ * Copyright 2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website;
+
 import static com.aoindustries.website.ApplicationResources.accessor;
 import java.util.Enumeration;
 import javax.servlet.ServletContext;
@@ -20,125 +20,142 @@ import org.apache.struts.Globals;
  */
 public class FilteredHttpSession implements HttpSession {
 
-    private final HttpSession wrapped;
+	private final HttpSession wrapped;
 
-    public FilteredHttpSession(HttpSession wrapped) {
-        this.wrapped = wrapped;
-    }
+	public FilteredHttpSession(HttpSession wrapped) {
+		this.wrapped = wrapped;
+	}
 
-    public long getCreationTime() {
-        return wrapped.getCreationTime();
-    }
+	@Override
+	public long getCreationTime() {
+		return wrapped.getCreationTime();
+	}
 
-    public String getId() {
-        return wrapped.getId();
-    }
+	@Override
+	public String getId() {
+		return wrapped.getId();
+	}
 
-    public long getLastAccessedTime() {
-        return wrapped.getLastAccessedTime();
-    }
+	@Override
+	public long getLastAccessedTime() {
+		return wrapped.getLastAccessedTime();
+	}
 
-    public ServletContext getServletContext() {
-        return wrapped.getServletContext();
-    }
+	@Override
+	public ServletContext getServletContext() {
+		return wrapped.getServletContext();
+	}
 
-    public void setMaxInactiveInterval(int interval) {
-        wrapped.setMaxInactiveInterval(interval);
-    }
+	@Override
+	public void setMaxInactiveInterval(int interval) {
+		wrapped.setMaxInactiveInterval(interval);
+	}
 
-    public int getMaxInactiveInterval() {
-        return wrapped.getMaxInactiveInterval();
-    }
+	@Override
+	public int getMaxInactiveInterval() {
+		return wrapped.getMaxInactiveInterval();
+	}
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
-    public javax.servlet.http.HttpSessionContext getSessionContext() {
-        return wrapped.getSessionContext();
-    }
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	@Override
+	public javax.servlet.http.HttpSessionContext getSessionContext() {
+		return wrapped.getSessionContext();
+	}
 
-    public Object getAttribute(String name) {
-        return wrapped.getAttribute(name);
-    }
+	@Override
+	public Object getAttribute(String name) {
+		return wrapped.getAttribute(name);
+	}
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
-    public Object getValue(String name) {
-        return wrapped.getValue(name);
-    }
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	@Override
+	public Object getValue(String name) {
+		return wrapped.getValue(name);
+	}
 
-    public Enumeration getAttributeNames() {
-        return wrapped.getAttributeNames();
-    }
+	@Override
+	public Enumeration<String> getAttributeNames() {
+		return wrapped.getAttributeNames();
+	}
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
-    public String[] getValueNames() {
-        return wrapped.getValueNames();
-    }
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	@Override
+	public String[] getValueNames() {
+		return wrapped.getValueNames();
+	}
 
-    /**
-     * Makes sure the session attribute is acceptable.  Throws AssertionError
-     * if it is not.
-     */
-    static void checkSessionAttribute(String name, Object value) {
-        // All all null to be set
-        if(value!=null) {
-            // These names are always allowed
-            if(
-                !Constants.AUTHENTICATION_TARGET.equals(name)
-                && !Globals.LOCALE_KEY.equals(name)
-                && !Constants.LAYOUT.equals(name)
-                && !Constants.SU_REQUESTED.equals(name)
-                && !Constants.AO_CONN.equals(name)
-                && !Constants.AUTHENTICATED_AO_CONN.equals(name)
-                // JSTL 1.1
-                && !"javax.servlet.jsp.jstl.fmt.request.charset".equals(name)
-                && !"javax.servlet.jsp.jstl.fmt.locale.session".equals(name)
-                // Must be an SessionActionForm if none of the above
-                && !(value instanceof SessionActionForm)
-            ) {
-                throw new AssertionError(accessor.getMessage("FilteredHttpSession.unexpectedSessionAttribute", name, value.getClass().getName()));
-            }
-        }
-    }
+	/**
+	 * Makes sure the session attribute is acceptable.  Throws AssertionError
+	 * if it is not.
+	 */
+	static void checkSessionAttribute(String name, Object value) {
+		// All all null to be set
+		if(value!=null) {
+			// These names are always allowed
+			if(
+				!Constants.AUTHENTICATION_TARGET.equals(name)
+				&& !Globals.LOCALE_KEY.equals(name)
+				&& !Constants.LAYOUT.equals(name)
+				&& !Constants.SU_REQUESTED.equals(name)
+				&& !Constants.AO_CONN.equals(name)
+				&& !Constants.AUTHENTICATED_AO_CONN.equals(name)
+				// JSTL 1.1
+				&& !"javax.servlet.jsp.jstl.fmt.request.charset".equals(name)
+				&& !"javax.servlet.jsp.jstl.fmt.locale.session".equals(name)
+				// Must be an SessionActionForm if none of the above
+				&& !(value instanceof SessionActionForm)
+			) {
+				throw new AssertionError(accessor.getMessage("FilteredHttpSession.unexpectedSessionAttribute", name, value.getClass().getName()));
+			}
+		}
+	}
 
-    public void setAttribute(String name, Object value) {
-        checkSessionAttribute(name, value);
-        wrapped.setAttribute(name, value);
-    }
+	@Override
+	public void setAttribute(String name, Object value) {
+		checkSessionAttribute(name, value);
+		wrapped.setAttribute(name, value);
+	}
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
-    public void putValue(String name, Object value) {
-        checkSessionAttribute(name, value);
-        wrapped.putValue(name, value);
-    }
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	@Override
+	public void putValue(String name, Object value) {
+		checkSessionAttribute(name, value);
+		wrapped.putValue(name, value);
+	}
 
-    public void removeAttribute(String name) {
-        wrapped.removeAttribute(name);
-    }
+	@Override
+	public void removeAttribute(String name) {
+		wrapped.removeAttribute(name);
+	}
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
-    public void removeValue(String name) {
-        wrapped.removeValue(name);
-    }
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	@Override
+	public void removeValue(String name) {
+		wrapped.removeValue(name);
+	}
 
-    public void invalidate() {
-        wrapped.invalidate();
-    }
+	@Override
+	public void invalidate() {
+		wrapped.invalidate();
+	}
 
-    public boolean isNew() {
-        return wrapped.isNew();
-    }
+	@Override
+	public boolean isNew() {
+		return wrapped.isNew();
+	}
 }

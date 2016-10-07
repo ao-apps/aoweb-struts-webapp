@@ -1,10 +1,10 @@
-package com.aoindustries.website.clientarea.ticket;
-
 /*
- * Copyright 2000-2009 by AO Industries, Inc.,
+ * Copyright 2000-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.clientarea.ticket;
+
 import com.aoindustries.aoserv.client.AOServConnector;
 import com.aoindustries.aoserv.client.AOServPermission;
 import com.aoindustries.aoserv.client.BusinessAdministrator;
@@ -28,33 +28,34 @@ import org.apache.struts.action.ActionMapping;
  */
 public class CreateAction extends PermissionAction {
 
-    @Override
-    public ActionForward executePermissionGranted(
-        ActionMapping mapping,
-        ActionForm form,
-        HttpServletRequest request,
-        HttpServletResponse response,
-        SiteSettings siteSettings,
-        Locale locale,
-        Skin skin,
-        AOServConnector aoConn
-    ) throws Exception {
-        TicketForm ticketForm = (TicketForm)form;
-        BusinessAdministrator thisBusinessAdministrator = aoConn.getThisBusinessAdministrator();
+	@Override
+	public ActionForward executePermissionGranted(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		SiteSettings siteSettings,
+		Locale locale,
+		Skin skin,
+		AOServConnector aoConn
+	) throws Exception {
+		TicketForm ticketForm = (TicketForm)form;
+		BusinessAdministrator thisBusinessAdministrator = aoConn.getThisBusinessAdministrator();
 
-        // Default to the business of the authenticated user
-        ticketForm.setAccounting(thisBusinessAdministrator.getUsername().getPackage().getBusiness().getAccounting().toString());
+		// Default to the business of the authenticated user
+		ticketForm.setAccounting(thisBusinessAdministrator.getUsername().getPackage().getBusiness().getAccounting().toString());
 
-        // Default to normal priority
-        ticketForm.setClientPriority(TicketPriority.NORMAL);
+		// Default to normal priority
+		ticketForm.setClientPriority(TicketPriority.NORMAL);
 
-        // Default contact emails
-        // ticketForm.setContactEmails(thisBusinessAdministrator.getEmail());
+		// Default contact emails
+		// ticketForm.setContactEmails(thisBusinessAdministrator.getEmail());
 
-        return mapping.findForward("success");
-    }
+		return mapping.findForward("success");
+	}
 
-    public List<AOServPermission.Permission> getPermissions() {
-        return Collections.singletonList(AOServPermission.Permission.add_ticket);
-    }
+	@Override
+	public List<AOServPermission.Permission> getPermissions() {
+		return Collections.singletonList(AOServPermission.Permission.add_ticket);
+	}
 }

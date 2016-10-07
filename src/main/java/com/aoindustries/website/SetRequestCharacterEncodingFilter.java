@@ -1,10 +1,10 @@
-package com.aoindustries.website;
-
 /*
- * Copyright 2007-2009 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website;
+
 import java.io.IOException;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -28,33 +28,36 @@ import javax.servlet.http.HttpSession;
  */
 public class SetRequestCharacterEncodingFilter implements Filter {
 
-    public void init(FilterConfig config) {
-    }
+	@Override
+	public void init(FilterConfig config) {
+	}
 
-    public void doFilter(
-        ServletRequest request,
-        ServletResponse response,
-        FilterChain chain
-    ) throws IOException, ServletException {
-        HttpServletRequest httpRequest = (HttpServletRequest)request;
-        HttpSession session = httpRequest.getSession(false);
-        if(session!=null) {
-            ServletContext servletContext = session.getServletContext();
-            try {
-                SiteSettings siteSettings = SiteSettings.getInstance(servletContext);
-                HttpServletResponse httpResponse = (HttpServletResponse)response;
-                Locale locale = SkinAction.getEffectiveLocale(siteSettings, httpRequest, httpResponse);
-                if(locale!=null) {
-                    request.setCharacterEncoding(Skin.getCharacterSet(locale));
-                }
-            } catch(Exception err) {
-                LogFactory.getLogger(servletContext, SetRequestCharacterEncodingFilter.class).log(Level.WARNING, null, err);
-            }
-        }
+	@Override
+	public void doFilter(
+		ServletRequest request,
+		ServletResponse response,
+		FilterChain chain
+	) throws IOException, ServletException {
+		HttpServletRequest httpRequest = (HttpServletRequest)request;
+		HttpSession session = httpRequest.getSession(false);
+		if(session!=null) {
+			ServletContext servletContext = session.getServletContext();
+			try {
+				SiteSettings siteSettings = SiteSettings.getInstance(servletContext);
+				HttpServletResponse httpResponse = (HttpServletResponse)response;
+				Locale locale = SkinAction.getEffectiveLocale(siteSettings, httpRequest, httpResponse);
+				if(locale!=null) {
+					request.setCharacterEncoding(Skin.getCharacterSet(locale));
+				}
+			} catch(Exception err) {
+				LogFactory.getLogger(servletContext, SetRequestCharacterEncodingFilter.class).log(Level.WARNING, null, err);
+			}
+		}
 
-        chain.doFilter(request, response);
-    }
-    
-    public void destroy() {
-    }
+		chain.doFilter(request, response);
+	}
+
+	@Override
+	public void destroy() {
+	}
 }

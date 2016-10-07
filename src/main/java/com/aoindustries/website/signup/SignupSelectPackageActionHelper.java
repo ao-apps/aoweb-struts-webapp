@@ -1,17 +1,17 @@
 /*
- * Copyright 2007-2009, 2015 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2015, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
 package com.aoindustries.website.signup;
 
-import static com.aoindustries.website.signup.ApplicationResources.accessor;
 import com.aoindustries.aoserv.client.AOServConnector;
 import com.aoindustries.aoserv.client.Business;
 import com.aoindustries.aoserv.client.PackageCategory;
 import com.aoindustries.aoserv.client.PackageDefinition;
 import com.aoindustries.encoding.ChainWriter;
 import com.aoindustries.website.SiteSettings;
+import static com.aoindustries.website.signup.ApplicationResources.accessor;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,66 +30,67 @@ import javax.servlet.http.HttpServletResponse;
  */
 final public class SignupSelectPackageActionHelper {
 
-    /**
-     * Make no instances.
-     */
-    private SignupSelectPackageActionHelper() {}
+	/**
+	 * Make no instances.
+	 */
+	private SignupSelectPackageActionHelper() {}
 
-    public static void setRequestAttributes(
-        ServletContext servletContext,
-        HttpServletRequest request,
-        HttpServletResponse response,
-        String packageCategoryName
-    ) throws IOException, SQLException {
-        List<PackageDefinition> packageDefinitions = getPackageDefinitions(servletContext, packageCategoryName);
-        
-        request.setAttribute("packageDefinitions", packageDefinitions);
-    }
+	public static void setRequestAttributes(
+		ServletContext servletContext,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		String packageCategoryName
+	) throws IOException, SQLException {
+		List<PackageDefinition> packageDefinitions = getPackageDefinitions(servletContext, packageCategoryName);
 
-    /**
-     * Gets the active package definitions ordered by monthly rate.
-     */
-    public static List<PackageDefinition> getPackageDefinitions(ServletContext servletContext, String packageCategoryName) throws IOException, SQLException {
-        AOServConnector rootConn = SiteSettings.getInstance(servletContext).getRootAOServConnector();
-        PackageCategory category = rootConn.getPackageCategories().get(packageCategoryName);
-        Business rootBusiness = rootConn.getThisBusinessAdministrator().getUsername().getPackage().getBusiness();
-        List<PackageDefinition> packageDefinitions = rootBusiness.getPackageDefinitions(category);
-        List<PackageDefinition> activePackageDefinitions = new ArrayList<PackageDefinition>();
+		request.setAttribute("packageDefinitions", packageDefinitions);
+	}
 
-        for(PackageDefinition packageDefinition : packageDefinitions) {
-            if(packageDefinition.isActive()) activePackageDefinitions.add(packageDefinition);
-        }
+	/**
+	 * Gets the active package definitions ordered by monthly rate.
+	 */
+	public static List<PackageDefinition> getPackageDefinitions(ServletContext servletContext, String packageCategoryName) throws IOException, SQLException {
+		AOServConnector rootConn = SiteSettings.getInstance(servletContext).getRootAOServConnector();
+		PackageCategory category = rootConn.getPackageCategories().get(packageCategoryName);
+		Business rootBusiness = rootConn.getThisBusinessAdministrator().getUsername().getPackage().getBusiness();
+		List<PackageDefinition> packageDefinitions = rootBusiness.getPackageDefinitions(category);
+		List<PackageDefinition> activePackageDefinitions = new ArrayList<PackageDefinition>();
 
-        Collections.sort(activePackageDefinitions, new PackageDefinitionComparator());
+		for(PackageDefinition packageDefinition : packageDefinitions) {
+			if(packageDefinition.isActive()) activePackageDefinitions.add(packageDefinition);
+		}
 
-        return activePackageDefinitions;
-    }
+		Collections.sort(activePackageDefinitions, new PackageDefinitionComparator());
 
-    private static class PackageDefinitionComparator implements Comparator<PackageDefinition> {
-        public int compare(PackageDefinition pd1, PackageDefinition pd2) {
-            return pd1.getMonthlyRate().compareTo(pd2.getMonthlyRate());
-        }
-    }
+		return activePackageDefinitions;
+	}
 
-    public static void setConfirmationRequestAttributes(
-        ServletContext servletContext,
-        HttpServletRequest request,
-        SignupSelectPackageForm signupSelectPackageForm
-    ) throws IOException, SQLException {
-        // Lookup things needed by the view
-        AOServConnector rootConn = SiteSettings.getInstance(servletContext).getRootAOServConnector();
-        PackageDefinition packageDefinition = rootConn.getPackageDefinitions().get(signupSelectPackageForm.getPackageDefinition());
+	private static class PackageDefinitionComparator implements Comparator<PackageDefinition> {
+		@Override
+		public int compare(PackageDefinition pd1, PackageDefinition pd2) {
+			return pd1.getMonthlyRate().compareTo(pd2.getMonthlyRate());
+		}
+	}
 
-        // Store as request attribute for the view
-        request.setAttribute("packageDefinition", packageDefinition);
-        request.setAttribute("setup", packageDefinition.getSetupFee());
-    }
+	public static void setConfirmationRequestAttributes(
+		ServletContext servletContext,
+		HttpServletRequest request,
+		SignupSelectPackageForm signupSelectPackageForm
+	) throws IOException, SQLException {
+		// Lookup things needed by the view
+		AOServConnector rootConn = SiteSettings.getInstance(servletContext).getRootAOServConnector();
+		PackageDefinition packageDefinition = rootConn.getPackageDefinitions().get(signupSelectPackageForm.getPackageDefinition());
 
-    public static void printConfirmation(ChainWriter emailOut, PackageDefinition packageDefinition) throws IOException {
-        emailOut.print("    <tr>\n"
-                     + "        <td>").print(accessor.getMessage("signup.notRequired")).print("</td>\n"
-                     + "        <td>").print(accessor.getMessage("signupSelectPackageForm.packageDefinition.prompt")).print("</td>\n"
-                     + "        <td>").encodeHtml(packageDefinition.getDisplay()).print("</td>\n"
-                     + "    </tr>\n");
-    }
+		// Store as request attribute for the view
+		request.setAttribute("packageDefinition", packageDefinition);
+		request.setAttribute("setup", packageDefinition.getSetupFee());
+	}
+
+	public static void printConfirmation(ChainWriter emailOut, PackageDefinition packageDefinition) throws IOException {
+		emailOut.print("    <tr>\n"
+					 + "        <td>").print(accessor.getMessage("signup.notRequired")).print("</td>\n"
+					 + "        <td>").print(accessor.getMessage("signupSelectPackageForm.packageDefinition.prompt")).print("</td>\n"
+					 + "        <td>").encodeXhtml(packageDefinition.getDisplay()).print("</td>\n"
+					 + "    </tr>\n");
+	}
 }

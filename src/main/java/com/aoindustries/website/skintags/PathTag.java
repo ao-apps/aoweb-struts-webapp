@@ -24,35 +24,38 @@ import javax.servlet.jsp.tagext.JspTag;
  */
 public class PathTag extends AutoEncodingBufferedTag implements ParamsAttribute {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private HttpParametersMap params;
+	private HttpParametersMap params;
 
-    public MediaType getContentType() {
-        return MediaType.URL;
-    }
+	@Override
+	public MediaType getContentType() {
+		return MediaType.URL;
+	}
 
-    public MediaType getOutputType() {
-        return null;
-    }
+	@Override
+	public MediaType getOutputType() {
+		return null;
+	}
 
-    @Override
-    public void addParam(String name, String value) {
-        if(params==null) params = new HttpParametersMap();
-        params.addParameter(name, value);
-    }
+	@Override
+	public void addParam(String name, String value) {
+		if(params==null) params = new HttpParametersMap();
+		params.addParameter(name, value);
+	}
 
-    protected void doTag(BufferResult capturedBody, Writer out) throws IOException {
+	@Override
+	protected void doTag(BufferResult capturedBody, Writer out) throws IOException {
 		PageContext pageContext = (PageContext)getJspContext();
 		ServletResponse response = pageContext.getResponse();
-        String path = capturedBody.trim().toString();
-        path = HttpParametersUtils.addParams(path, params, response.getCharacterEncoding());
-        JspTag parent = findAncestorWithClass(this, PathAttribute.class);
-        if(parent==null) {
-            PageAttributesBodyTag.getPageAttributes(pageContext).setPath(path);
-        } else {
-            PathAttribute pathAttribute = (PathAttribute)parent;
-            pathAttribute.setPath(path);
-        }
-    }
+		String path = capturedBody.trim().toString();
+		path = HttpParametersUtils.addParams(path, params, response.getCharacterEncoding());
+		JspTag parent = findAncestorWithClass(this, PathAttribute.class);
+		if(parent==null) {
+			PageAttributesBodyTag.getPageAttributes(pageContext).setPath(path);
+		} else {
+			PathAttribute pathAttribute = (PathAttribute)parent;
+			pathAttribute.setPath(path);
+		}
+	}
 }

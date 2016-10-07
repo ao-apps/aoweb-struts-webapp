@@ -1,10 +1,10 @@
-package com.aoindustries.website.skintags;
-
 /*
- * Copyright 2009 by AO Industries, Inc.,
+ * Copyright 2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.skintags;
+
 import java.util.Collection;
 
 /**
@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 public interface MetasAttribute {
 
-    Collection<Meta> getMetas();
+	Collection<Meta> getMetas();
 
-    void addMeta(Meta meta);
+	void addMeta(Meta meta);
 }

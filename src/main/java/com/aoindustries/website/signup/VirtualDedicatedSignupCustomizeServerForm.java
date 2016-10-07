@@ -1,10 +1,10 @@
-package com.aoindustries.website.signup;
-
 /*
- * Copyright 2007-2009 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.signup;
+
 import java.io.Serializable;
 
 /**
@@ -12,9 +12,10 @@ import java.io.Serializable;
  */
 public class VirtualDedicatedSignupCustomizeServerForm extends SignupCustomizeServerForm implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    protected String getSignupSelectPackageFormName() {
-        return "virtualDedicatedSignupSelectPackageForm";
-    }
+	@Override
+	protected String getSignupSelectPackageFormName() {
+		return "virtualDedicatedSignupSelectPackageForm";
+	}
 }

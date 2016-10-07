@@ -1,10 +1,9 @@
-package com.aoindustries.website.skintags;
-
 /*
- * Copyright 2007-2009 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website.skintags;
 
 /**
  * Something with a path attribute.
@@ -13,7 +12,7 @@ package com.aoindustries.website.skintags;
  */
 public interface PathAttribute {
 
-    String getPath();
+	String getPath();
 
-    void setPath(String path);
+	void setPath(String path);
 }

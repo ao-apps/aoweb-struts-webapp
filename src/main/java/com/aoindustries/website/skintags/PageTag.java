@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2009, 2015 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2015, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
@@ -30,6 +30,8 @@ abstract public class PageTag extends BodyTagSupport implements
 		TitleAttribute,
 		NavImageAltAttribute {
 
+	private static final long serialVersionUID = 1L;
+
 	private String title;
 	private String navImageAlt;
 	private String description;
@@ -59,67 +61,83 @@ abstract public class PageTag extends BodyTagSupport implements
 		return EVAL_BODY_BUFFERED;
 	}
 
+	@Override
 	public String getTitle() {
 		return title;
 	}
 
+	@Override
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	@Override
 	public String getNavImageAlt() {
 		return navImageAlt;
 	}
 
+	@Override
 	public void setNavImageAlt(String navImageAlt) {
 		this.navImageAlt = navImageAlt;
 	}
 
+	@Override
 	public String getDescription() {
 		return description;
 	}
 
+	@Override
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	@Override
 	public String getAuthor() {
 		return author;
 	}
 
+	@Override
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 
+	@Override
 	public String getCopyright() {
 		return copyright;
 	}
 
+	@Override
 	public void setCopyright(String copyright) {
 		this.copyright = copyright;
 	}
 
+	@Override
 	public String getPath() {
 		return path;
 	}
 
+	@Override
 	public void setPath(String path) {
 		this.path = path;
 	}
 
+	@Override
 	public String getKeywords() {
 		return keywords;
 	}
 
+	@Override
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
 	}
 
+	@Override
 	public Collection<Meta> getMetas() {
 		if(metas==null) return Collections.emptyList();
 		return metas;
 	}
 
+	@Override
 	public void addMeta(Meta meta) {
 		if(metas==null) metas = new ArrayList<Meta>();
 		metas.add(meta);

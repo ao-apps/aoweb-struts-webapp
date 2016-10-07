@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2009, 2015 by AO Industries, Inc.,
+ * Copyright 2007-2009, 2015, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
@@ -19,78 +19,78 @@ import org.apache.struts.action.ActionMessage;
  */
 public class EditCreditCardForm extends CreditCardForm implements Serializable {
 
-    private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 2L;
 
-    private String persistenceId;
-    private String isActive;
+	private String persistenceId;
+	private String isActive;
 
-    public EditCreditCardForm() {
-    }
-
-	@Override
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-        super.reset(mapping, request);
-        setPersistenceId("");
-        setIsActive("");
-    }
-
-    public String getPersistenceId() {
-        return persistenceId;
-    }
-
-    public void setPersistenceId(String persistenceId) {
-        this.persistenceId = persistenceId;
-    }
-
-    public String getIsActive() {
-        return isActive;
-    }
-    
-    public void setIsActive(String isActive) {
-        this.isActive = isActive;
-    }
+	public EditCreditCardForm() {
+	}
 
 	@Override
-    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        ActionErrors errors = super.validate(mapping, request);
-        if(errors==null) errors = new ActionErrors();
-        // persistenceId
-        if(GenericValidator.isBlankOrNull(persistenceId)) errors.add("persistenceId", new ActionMessage("editCreditCardForm.persistenceId.required"));
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		super.reset(mapping, request);
+		setPersistenceId("");
+		setIsActive("");
+	}
 
-        // cardNumber
+	public String getPersistenceId() {
+		return persistenceId;
+	}
+
+	public void setPersistenceId(String persistenceId) {
+		this.persistenceId = persistenceId;
+	}
+
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
+	}
+
+	@Override
+	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+		ActionErrors errors = super.validate(mapping, request);
+		if(errors==null) errors = new ActionErrors();
+		// persistenceId
+		if(GenericValidator.isBlankOrNull(persistenceId)) errors.add("persistenceId", new ActionMessage("editCreditCardForm.persistenceId.required"));
+
+		// cardNumber
 		String cardNumber = getCardNumber();
-        if(
-            !GenericValidator.isBlankOrNull(cardNumber)
-            && !GenericValidator.isCreditCard(CreditCard.numbersOnly(cardNumber))
-        ) errors.add("cardNumber", new ActionMessage("editCreditCardForm.cardNumber.invalid"));
+		if(
+			!GenericValidator.isBlankOrNull(cardNumber)
+			&& !GenericValidator.isCreditCard(CreditCard.numbersOnly(cardNumber))
+		) errors.add("cardNumber", new ActionMessage("editCreditCardForm.cardNumber.invalid"));
 
-        // expirationMonth and expirationYear required when cardNumber provided
+		// expirationMonth and expirationYear required when cardNumber provided
 		String expirationMonth = getExpirationMonth();
 		String expirationYear = getExpirationYear();
-        if(!GenericValidator.isBlankOrNull(cardNumber)) {
-            if(
-                GenericValidator.isBlankOrNull(expirationMonth)
-                || GenericValidator.isBlankOrNull(expirationYear)
-            ) errors.add("expirationDate", new ActionMessage("editCreditCardForm.expirationDate.required"));
-        } else {
-            // If either month or year provided, both must be provided
-            if(
-                !GenericValidator.isBlankOrNull(expirationMonth)
-                && GenericValidator.isBlankOrNull(expirationYear)
-            ) {
-                errors.add("expirationDate", new ActionMessage("editCreditCardForm.expirationDate.monthWithoutYear"));
-            } else if(
-                GenericValidator.isBlankOrNull(expirationMonth)
-                && !GenericValidator.isBlankOrNull(expirationYear)
-            ) {
-                errors.add("expirationDate", new ActionMessage("editCreditCardForm.expirationDate.yearWithoutMonth"));
-            }
-        }
+		if(!GenericValidator.isBlankOrNull(cardNumber)) {
+			if(
+				GenericValidator.isBlankOrNull(expirationMonth)
+				|| GenericValidator.isBlankOrNull(expirationYear)
+			) errors.add("expirationDate", new ActionMessage("editCreditCardForm.expirationDate.required"));
+		} else {
+			// If either month or year provided, both must be provided
+			if(
+				!GenericValidator.isBlankOrNull(expirationMonth)
+				&& GenericValidator.isBlankOrNull(expirationYear)
+			) {
+				errors.add("expirationDate", new ActionMessage("editCreditCardForm.expirationDate.monthWithoutYear"));
+			} else if(
+				GenericValidator.isBlankOrNull(expirationMonth)
+				&& !GenericValidator.isBlankOrNull(expirationYear)
+			) {
+				errors.add("expirationDate", new ActionMessage("editCreditCardForm.expirationDate.yearWithoutMonth"));
+			}
+		}
 
 		// cardCode required when cardNumber provided
 		String cardCode = getCardCode();
-        if(!GenericValidator.isBlankOrNull(cardNumber)) {
-            if(GenericValidator.isBlankOrNull(cardCode)) errors.add("cardCode", new ActionMessage("editCreditCardForm.cardCode.required"));
+		if(!GenericValidator.isBlankOrNull(cardNumber)) {
+			if(GenericValidator.isBlankOrNull(cardCode)) errors.add("cardCode", new ActionMessage("editCreditCardForm.cardCode.required"));
 			else {
 				try {
 					CreditCard.validateCardCode(cardCode);
@@ -98,9 +98,9 @@ public class EditCreditCardForm extends CreditCardForm implements Serializable {
 					errors.add("cardCode", new ActionMessage(e.getLocalizedMessage(), false));
 				}
 			}
-        } else {
-            if(!GenericValidator.isBlankOrNull(cardCode)) errors.add("cardCode", new ActionMessage("editCreditCardForm.cardCode.notAllowed"));
-        }
-        return errors;
-    }
+		} else {
+			if(!GenericValidator.isBlankOrNull(cardCode)) errors.add("cardCode", new ActionMessage("editCreditCardForm.cardCode.notAllowed"));
+		}
+		return errors;
+	}
 }

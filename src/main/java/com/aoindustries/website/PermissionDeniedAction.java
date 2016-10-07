@@ -1,10 +1,10 @@
-package com.aoindustries.website;
-
 /*
- * Copyright 2009 by AO Industries, Inc.,
+ * Copyright 2009, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
+package com.aoindustries.website;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.Action;
@@ -19,14 +19,14 @@ import org.apache.struts.action.ActionMapping;
  */
 public class PermissionDeniedAction extends Action {
 
-    @Override
-    public ActionForward execute(
-        ActionMapping mapping,
-        ActionForm form,
-        HttpServletRequest request,
-        HttpServletResponse response
-    ) throws Exception {
-        response.sendError(HttpServletResponse.SC_FORBIDDEN);
-        return null;
-    }
+	@Override
+	public ActionForward execute(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response
+	) throws Exception {
+		response.sendError(HttpServletResponse.SC_FORBIDDEN);
+		return null;
+	}
 }

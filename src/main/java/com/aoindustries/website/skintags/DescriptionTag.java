@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2013 by AO Industries, Inc.,
+ * Copyright 2007-2013, 2016 by AO Industries, Inc.,
  * 7262 Bull Pen Cir, Mobile, Alabama, 36695, U.S.A.
  * All rights reserved.
  */
@@ -18,22 +18,25 @@ import javax.servlet.jsp.tagext.JspTag;
  */
 public class DescriptionTag extends AutoEncodingBufferedTag {
 
-    public MediaType getContentType() {
-        return MediaType.TEXT;
-    }
+	@Override
+	public MediaType getContentType() {
+		return MediaType.TEXT;
+	}
 
-    public MediaType getOutputType() {
-        return null;
-    }
+	@Override
+	public MediaType getOutputType() {
+		return null;
+	}
 
-    protected void doTag(BufferResult capturedBody, Writer out) throws IOException {
-        String description = capturedBody.trim().toString();
-        JspTag parent = findAncestorWithClass(this, DescriptionAttribute.class);
-        if(parent==null) {
-            PageAttributesBodyTag.getPageAttributes((PageContext)getJspContext()).setDescription(description);
-        } else {
-            DescriptionAttribute descriptionAttribute = (DescriptionAttribute)parent;
-            descriptionAttribute.setDescription(description);
-        }
-    }
+	@Override
+	protected void doTag(BufferResult capturedBody, Writer out) throws IOException {
+		String description = capturedBody.trim().toString();
+		JspTag parent = findAncestorWithClass(this, DescriptionAttribute.class);
+		if(parent==null) {
+			PageAttributesBodyTag.getPageAttributes((PageContext)getJspContext()).setDescription(description);
+		} else {
+			DescriptionAttribute descriptionAttribute = (DescriptionAttribute)parent;
+			descriptionAttribute.setDescription(description);
+		}
+	}
 }
