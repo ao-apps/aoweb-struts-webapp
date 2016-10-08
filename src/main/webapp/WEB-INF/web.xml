@@ -25,45 +25,6 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 	</context-param>
 <!-- Include "web.xml.contextParams" -->
 
-	<!-- Filter to disallow direct JSP access, redirects /index.jsp to /index.do -->
-	<filter>
-		<filter-name>NoDirectJspFilter</filter-name>
-		<filter-class>com.aoindustries.website.NoDirectJspFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>NoDirectJspFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
-	<!-- Filter to make HTTPS sessions be carried over to HTTP -->
-	<filter>
-		<filter-name>SessionFilter</filter-name>
-		<filter-class>com.aoindustries.website.SessionFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>SessionFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<!-- Filter unnecessary whitespace -->
-	<filter>
-		<filter-name>TrimFilter</filter-name>
-		<filter-class>com.aoindustries.servlet.filter.TrimFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>TrimFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-		<dispatcher>FORWARD</dispatcher>
-	</filter-mapping>
-	<!-- Filter to set request character encoding based on locale in session -->
-	<filter>
-		<filter-name>SetRequestCharacterEncodingFilter</filter-name>
-		<filter-class>com.aoindustries.website.SetRequestCharacterEncodingFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>SetRequestCharacterEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
 	<!-- Action Servlet Configuration -->
 	<servlet>
 		<servlet-name>action</servlet-name>
@@ -113,7 +74,9 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 	</session-config>
 
 	<welcome-file-list>
+		<welcome-file>index.jspx</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.do</welcome-file>
 	</welcome-file-list>
 
 	<!-- Error Pages -->
