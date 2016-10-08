@@ -29,7 +29,7 @@ struts-config.xml.messageResources    Additional message resources
 	<!-- ========== Global Forward Definitions ============================== -->
 	<global-forwards>
 		<!-- / -->
-		<forward name="exception" path="/exception.jsp" redirect="false" />
+		<forward name="exception" path="/exception.inc.jsp" redirect="false" />
 		<forward name="login" path="/login.do" redirect="false" />
 		<forward name="permission-denied" path="/permission-denied.do" redirect="false" />
 	</global-forwards>
@@ -41,13 +41,13 @@ struts-config.xml.messageResources    Additional message resources
 			path="/exception"
 			type="com.aoindustries.website.SkinAction"
 		>
-			<forward name="success" path="/exception.jsp" redirect="false" />
+			<forward name="success" path="/exception.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/not-found"
 			type="com.aoindustries.website.SkinAction"
 		>
-			<forward name="success" path="/not-found.jsp" redirect="false" />
+			<forward name="success" path="/not-found.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/contact"
@@ -56,7 +56,7 @@ struts-config.xml.messageResources    Additional message resources
 			validate="false"
 			type="com.aoindustries.website.SkinAction"
 		>
-			<forward name="success" path="/contact.jsp" redirect="false" />
+			<forward name="success" path="/contact.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/contact-completed"
@@ -65,8 +65,8 @@ struts-config.xml.messageResources    Additional message resources
 			validate="false"
 			type="com.aoindustries.website.ContactCompletedAction"
 		>
-			<forward name="input" path="/contact.jsp" redirect="false" />
-			<forward name="success" path="/contact-completed.jsp" redirect="false" />
+			<forward name="input" path="/contact.inc.jsp" redirect="false" />
+			<forward name="success" path="/contact-completed.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/login"
@@ -75,7 +75,7 @@ struts-config.xml.messageResources    Additional message resources
 			validate="false"
 			type="com.aoindustries.website.LoginAction"
 		>
-			<forward name="success" path="/login.jsp" redirect="false" />
+			<forward name="success" path="/login.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/login-completed"
@@ -84,9 +84,9 @@ struts-config.xml.messageResources    Additional message resources
 			validate="false"
 			type="com.aoindustries.website.LoginCompletedAction"
 		>
-			<forward name="input" path="/login.jsp" redirect="false" />
+			<forward name="input" path="/login.inc.jsp" redirect="false" />
 			<!-- Redirect done directly from Action now: forward name="success" path="/clientarea/index.do" redirect="true" /-->
-			<forward name="failure" path="/login.jsp" redirect="false" />
+			<forward name="failure" path="/login.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/permission-denied"
@@ -99,26 +99,26 @@ struts-config.xml.messageResources    Additional message resources
 			validate="false"
 			type="com.aoindustries.website.SessionTimeoutAction"
 		>
-			<forward name="success" path="/login.jsp" redirect="false" />
+			<forward name="success" path="/login.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/set-resource-bundle-value"
 			type="com.aoindustries.website.SetResourceBundleValueAction"
 		>
-			<forward name="success" path="/set-resource-bundle-value.jsp" redirect="false" />
+			<forward name="success" path="/set-resource-bundle-value.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/logout"
 			type="com.aoindustries.website.LogoutAction"
 		>
-			<forward name="success" path="/logout.jsp" redirect="false" />
+			<forward name="success" path="/logout.inc.jsp" redirect="false" />
 		</action>
 <!-- Include "struts-config.xml.actions" -->
 		<action
 			path="/**"
 			type="com.aoindustries.website.SkinAction"
 		>
-			<forward name="success" path="/not-found.jsp" redirect="false" />
+			<forward name="success" path="/not-found.inc.jsp" redirect="false" />
 		</action>
 	</action-mappings>
 

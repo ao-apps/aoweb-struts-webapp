@@ -26,7 +26,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 	<!-- ========== Global Forward Definitions ============================== -->
 	<global-forwards>
 		<!-- / -->
-		<forward name="exception" module="" path="/exception.jsp" redirect="false" />
+		<forward name="exception" module="" path="/exception.inc.jsp" redirect="false" />
 		<forward name="login" module="" path="/login.do" redirect="false" />
 		<forward name="permission-denied" module="" path="/permission-denied.do" redirect="false" />
 	</global-forwards>
@@ -37,7 +37,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			path="/index"
 			type="com.aoindustries.website.clientarea.ticket.IndexAction"
 		>
-			<forward name="success" path="/index.jsp" redirect="false" />
+			<forward name="success" path="/index.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/create"
@@ -46,8 +46,8 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			validate="false"
 			type="com.aoindustries.website.clientarea.ticket.CreateAction"
 		>
-			<forward name="permission-denied" path="/create.jsp" redirect="false" />
-			<forward name="success" path="/create.jsp" redirect="false" />
+			<forward name="permission-denied" path="/create.inc.jsp" redirect="false" />
+			<forward name="success" path="/create.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/create-completed"
@@ -56,9 +56,9 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			validate="false"
 			type="com.aoindustries.website.clientarea.ticket.CreateCompletedAction"
 		>
-			<forward name="permission-denied" path="/create.jsp" redirect="false" />
-			<forward name="input" path="/create.jsp" redirect="false" />
-			<forward name="success" path="/create-completed.jsp" redirect="false" />
+			<forward name="permission-denied" path="/create.inc.jsp" redirect="false" />
+			<forward name="input" path="/create.inc.jsp" redirect="false" />
+			<forward name="success" path="/create-completed.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/edit"
@@ -67,8 +67,8 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			validate="false"
 			type="com.aoindustries.website.clientarea.ticket.EditAction"
 		>
-			<forward name="permission-denied" path="/edit.jsp" redirect="false" />
-			<forward name="success" path="/edit.jsp" redirect="false" />
+			<forward name="permission-denied" path="/edit.inc.jsp" redirect="false" />
+			<forward name="success" path="/edit.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/edit-completed"
@@ -77,16 +77,16 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			validate="false"
 			type="com.aoindustries.website.clientarea.ticket.EditCompletedAction"
 		>
-			<forward name="permission-denied" path="/edit.jsp" redirect="false" />
-			<forward name="input" path="/edit.jsp" redirect="false" />
+			<forward name="permission-denied" path="/edit.inc.jsp" redirect="false" />
+			<forward name="input" path="/edit.inc.jsp" redirect="false" />
 			<forward name="index" path="/index.do" redirect="true" />
-			<forward name="success" path="/edit-completed.jsp" redirect="false" />
+			<forward name="success" path="/edit-completed.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/**"
 			type="com.aoindustries.website.SkinAction"
 		>
-			<forward name="success" module="" path="/not-found.jsp" redirect="false" />
+			<forward name="success" module="" path="/not-found.inc.jsp" redirect="false" />
 		</action>
 	</action-mappings>
 
