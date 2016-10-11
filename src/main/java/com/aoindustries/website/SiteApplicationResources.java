@@ -5,6 +5,7 @@
  */
 package com.aoindustries.website;
 
+import com.aoindustries.util.i18n.ApplicationResourcesAccessor;
 import com.aoindustries.util.i18n.EditableResourceBundle;
 import com.aoindustries.util.i18n.EditableResourceBundleSet;
 import java.io.File;
@@ -34,4 +35,6 @@ public final class SiteApplicationResources extends EditableResourceBundle {
 			new File(System.getProperty("user.home")+"/common/ao/cvswork/aoweb-struts/WEB-INF/classes/com/aoindustries/website/SiteApplicationResources.properties")
 		);
 	}
+
+	public static final ApplicationResourcesAccessor accessor = ApplicationResourcesAccessor.getInstance(bundleSet.getBaseName());
 }
