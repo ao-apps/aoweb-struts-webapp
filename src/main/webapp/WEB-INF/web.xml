@@ -25,8 +25,6 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 	</context-param>
 <!-- Include "web.xml.contextParams" -->
 
-<!-- Include "web.xml.filters" -->
-
 	<!-- Action Servlet Configuration -->
 	<servlet>
 		<servlet-name>action</servlet-name>
