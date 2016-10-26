@@ -42,7 +42,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	</properties>
 
 	<name>AOWeb Struts Webapp</name>
-	<url>${project.parent.url}webapp/</url>
+	<url>https://www.aoindustries.com${bookPath}/</url><!-- Can't inherit due to multi-module -->
 	<description>Template webapp for legacy Struts-based site framework with AOServ Platform control panels.</description>
 	<inceptionYear>2007</inceptionYear>
 
