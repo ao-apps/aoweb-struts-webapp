@@ -57,7 +57,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.1.0"
-			dateCreated="2016-10-20T19:01:00-0500"
+			datePublished="2016-10-20T19:01:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -71,7 +71,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.0.2"
-			dateCreated="2016-10-11T14:40:00-0500"
+			datePublished="2016-10-11T14:40:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -84,7 +84,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.0.1"
-			dateCreated="2016-10-11T14:05:00-0500"
+			datePublished="2016-10-11T14:05:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -100,7 +100,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.0.0"
-			dateCreated="2016-10-08T01:24:00-0500"
+			datePublished="2016-10-08T01:24:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
