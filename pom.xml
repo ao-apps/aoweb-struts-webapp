@@ -36,13 +36,12 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	<packaging>war</packaging>
 
 	<properties>
-		<bookPath>/${project.parent.artifactId}/webapp</bookPath>
 		<shortTitle>Webapp</shortTitle>
 		<description.html><![CDATA[Template webapp for legacy Struts-based site framework with <a target="_top" href="https://aoindustries.com/aoserv/">AOServ Platform</a> control panels.]]></description.html>
 	</properties>
 
 	<name>AOWeb Struts Webapp</name>
-	<url>https://aoindustries.com${bookPath}/</url><!-- Can't inherit due to multi-module -->
+	<url>https://aoindustries.com/${project.parent.artifactId}/webapp/</url>
 	<description>Template webapp for legacy Struts-based site framework with AOServ Platform control panels.</description>
 	<inceptionYear>2007</inceptionYear>
 
