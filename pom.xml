@@ -33,7 +33,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 
 	<groupId>com.aoindustries</groupId>
 	<artifactId>aoweb-struts-webapp</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.1.2</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -53,7 +53,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<connection>scm:git:git://github.com/aoindustries/${project.artifactId}.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/${project.artifactId}.git</developerConnection>
 		<url>https://github.com/aoindustries/${project.artifactId}</url>
-		<tag>HEAD</tag>
+		<tag>aoweb-struts-webapp-1.1.2</tag>
 	</scm>
 
 	<profiles>
