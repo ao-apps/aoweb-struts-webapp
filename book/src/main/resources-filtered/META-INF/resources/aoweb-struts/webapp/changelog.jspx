@@ -37,7 +37,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2017-07-20T12:00:05-0500"
+		dateModified="2017-07-29T09:39:10-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:aoweb-struts-webapp:pom.version}" />
@@ -52,7 +52,11 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			/>
+			>
+				<ul>
+					<li>New version of <ao:a href="https://semanticcms.com/core/servlet/">SemanticCMS Core Servlet</ao:a></li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
