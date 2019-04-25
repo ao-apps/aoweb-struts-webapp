@@ -37,7 +37,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2017-07-29T09:39:10-0500"
+		dateModified="2019-04-25T01:21:47-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:aoweb-struts-webapp:pom.version}" />
@@ -52,7 +52,12 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			/>
+			>
+				<ul>
+					<li>Minimum Java version changed from 1.6 to 1.7.</li>
+					<li>Updated dependencies.</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
