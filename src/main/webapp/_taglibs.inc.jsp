@@ -1,6 +1,6 @@
 <%--
 aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
-Copyright (C) 2009, 2015, 2016  AO Industries, Inc.
+Copyright (C) 2009, 2015, 2016, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -37,3 +37,5 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 <%@ taglib prefix="ao" uri="https://aoindustries.com/ao-taglib/" %>
 <%@ taglib prefix="aoweb" uri="https://aoindustries.com/aoweb-struts/core/aoweb-taglib/" %>
 <%@ taglib prefix="skin" uri="https://aoindustries.com/aoweb-struts/core/skin-taglib/" %>
+<%-- SemanticCMS --%>
+<%@ taglib prefix="core" uri="https://semanticcms.com/core/taglib/" %>
