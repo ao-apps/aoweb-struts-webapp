@@ -62,7 +62,10 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- TODO: Make a Java EE 6 Web BOM to import.  This pattern is used may places -->
+			<!--
+				TODO: Make a Java EE 6 Web BOM to import.  This pattern is used may places
+				      See https://stackoverflow.com/questions/24239978/java-ee-web-profile-vs-java-ee-full-platform
+-			-->
 			<!-- Java EE -->
 			<dependency>
 				<groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.0.1</version>
