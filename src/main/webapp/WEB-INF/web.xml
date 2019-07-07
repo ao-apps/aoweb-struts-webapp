@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
-Copyright (C) 2009, 2016, 2017  AO Industries, Inc.
+Copyright (C) 2009, 2016, 2017, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -39,7 +39,8 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
   version="3.0"
   metadata-complete="false">
-
+	<display-name>@{project.name} @{project.version}</display-name>
+	<description>@{project.description}</description>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>com.aoindustries.website.SiteApplicationResources</param-value>
