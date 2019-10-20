@@ -36,7 +36,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2019-10-12T23:19:13-0500"
+		dateModified="2019-10-20T02:53:10-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:aoweb-struts-webapp:pom.version}" />
@@ -51,7 +51,11 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			/>
+			>
+				<ul>
+					<li>Defaulting to doctype "strict" until converted to HTML 5.</li>
+				</ul>
+			</c:if>
 		</c:if>
 
 		<changelog:release

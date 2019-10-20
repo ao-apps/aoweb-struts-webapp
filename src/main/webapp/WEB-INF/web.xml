@@ -45,6 +45,20 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>com.aoindustries.website.SiteApplicationResources</param-value>
 	</context-param>
+	<context-param>
+		<description><![CDATA[
+			Controls the default DOCTYPE for the application.  Supported values:
+			<ul>
+				<li><code>html5</code> or <code>default</code> - (default) - Use (X)HTML 5 </li>
+				<li><code>strict</code> - Use (X)HTML strict</li>
+				<li><code>transitional</code> - Use (X)HTML transitional/loose</li>
+				<li><code>frameset</code> - Use (X)HTML frameset</li>
+				<li><code>none</code> - No doctype</li>
+			</ul>
+		]]></description>
+		<param-name>com.aoindustries.servlet.http.Html$DocType.default</param-name>
+		<param-value>strict</param-value>
+	</context-param>
 <!-- Include "web.xml.contextParams" -->
 
 	<!-- Action Servlet Configuration -->
