@@ -47,17 +47,30 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 	</context-param>
 	<context-param>
 		<description><![CDATA[
-			Controls the default DOCTYPE for the application.  Supported values:
+			Controls the selection of HTML versus XHTML.  Supports three values:
 			<ul>
-				<li><code>html5</code> or <code>default</code> - (default) - Use (X)HTML 5 </li>
-				<li><code>strict</code> - Use (X)HTML strict</li>
-				<li><code>transitional</code> - Use (X)HTML transitional/loose</li>
-				<li><code>frameset</code> - Use (X)HTML frameset</li>
-				<li><code>none</code> - No doctype</li>
+				<li><code>SGML</code> - Use HTML always</li>
+				<li><code>XML</code> - Use XHTML always</li>
+				<li><code>auto</code> - (default) - Automatically choose based on the client's <code>Accept</code> header</li>
 			</ul>
 		]]></description>
-		<param-name>com.aoindustries.servlet.http.Html$DocType.default</param-name>
-		<param-value>strict</param-value>
+		<param-name>com.aoindustries.html.Serialization.default</param-name>
+		<param-value>auto</param-value>
+	</context-param>
+	<context-param>
+		<description><![CDATA[
+			Controls the default DOCTYPE for the application.  Supported values:
+			<ul>
+				<li><code>HTML5</code> - Use (X)HTML 5</li>
+				<li><code>STRICT</code> - Use (X)HTML strict</li>
+				<li><code>TRANSITIONAL</code> - Use (X)HTML transitional/loose</li>
+				<li><code>FRAMESET</code> - Use (X)HTML frameset</li>
+				<li><code>NONE</code> - No doctype</li>
+				<li><code>default</code> - (default) - Use (X)HTML 5</li>
+			</ul>
+		]]></description>
+		<param-name>com.aoindustries.html.Doctype.default</param-name>
+		<param-value>default</param-value>
 	</context-param>
 <!-- Include "web.xml.contextParams" -->
 

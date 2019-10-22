@@ -21,12 +21,6 @@ You should have received a copy of the GNU Lesser General Public License
 along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" %>
-<%-- Struts 1.3 --%>
-<%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
-<%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
-<%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
-<%@ taglib prefix="nested" uri="http://struts.apache.org/tags-nested" %>
-<html:xhtml />
 <%-- JSTL 1.2 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
@@ -37,5 +31,14 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 <%@ taglib prefix="ao" uri="https://aoindustries.com/ao-taglib/" %>
 <%@ taglib prefix="aoweb" uri="https://aoindustries.com/aoweb-struts/core/aoweb-taglib/" %>
 <%@ taglib prefix="skin" uri="https://aoindustries.com/aoweb-struts/core/skin-taglib/" %>
+<%-- Struts 1.3 --%>
+<%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
+<%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+<%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
+<%@ taglib prefix="nested" uri="http://struts.apache.org/tags-nested" %>
+<%-- TODO: Test this --%>
+<c:if test="${ao:getSerialization() == 'XML'}">
+	<html:xhtml />
+</c:if>
 <%-- SemanticCMS --%>
 <%@ taglib prefix="core" uri="https://semanticcms.com/core/taglib/" %>

@@ -36,7 +36,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2019-10-20T02:53:10-0500"
+		dateModified="2019-10-23T19:30:38-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:aoweb-struts-webapp:pom.version}" />
@@ -53,9 +53,13 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				scmUrl="@{documented.scm.url}"
 			>
 				<ul>
-					<li>Defaulting to doctype "strict" until converted to HTML 5.</li>
+					<li>
+						Now outputting HTML or XHTML based on the current response content type.
+						This should eliminate validator warnings when used as HTML.
+					</li>
+					<li>Defaulting to doctype "STRICT" until converted to HTML 5.</li>
 				</ul>
-			</c:if>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release

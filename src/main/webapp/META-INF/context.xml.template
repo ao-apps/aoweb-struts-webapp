@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
-Copyright (C) 2007-2009, 2015, 2016  AO Industries, Inc.
+Copyright (C) 2007-2009, 2015, 2016, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -29,14 +29,6 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	<!-- Configuration for Error Handlers -->
 	<!-- Recommend using true for development and false for production -->
 	<Parameter name="exception.showError" value="false" />
-
-	<!--
-		Enables the use of xhtml content type for compatible browsers.
-		Recommend using true for development and false for production until sites
-		fully validated and debugged.  This defaults to false if missing or not
-		precisely equal to "true".
-	-->
-	<Parameter name="com.aoindustries.website.skintags.SetContentTypeTag.allowApplicationXhtmlXml" value="false" />
 
 	<!--
 		Enables the direct editing of resource bundles.
