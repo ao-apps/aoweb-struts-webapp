@@ -37,6 +37,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 / <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
 		<shortTitle>Webapp</shortTitle>
 		<description.html><![CDATA[Template webapp for legacy Struts-based site framework with <a target="_top" href="https://aoindustries.com/aoserv/">AOServ Platform</a> control panels.]]></description.html>
+		<com.aoindustries.html.Serialization.default>SGML</com.aoindustries.html.Serialization.default>
 	</properties>
 
 	<name>AOWeb Struts Webapp</name>
@@ -53,6 +54,13 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	</scm>
 
 	<profiles>
+		<!-- Features only enabled during development time -->
+		<profile>
+			<id>development</id>
+			<properties>
+				<com.aoindustries.html.Serialization.default>auto</com.aoindustries.html.Serialization.default>
+			</properties>
+		</profile>
 		<profile>
 			<id>release</id>
 			<build>
