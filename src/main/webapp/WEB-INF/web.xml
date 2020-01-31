@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
-Copyright (C) 2009, 2016, 2017, 2019  AO Industries, Inc.
+Copyright (C) 2009, 2016, 2017, 2019, 2020  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -71,6 +71,17 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		]]></description>
 		<param-name>com.aoindustries.html.Doctype.default</param-name>
 		<param-value>default</param-value>
+	</context-param>
+	<context-param>
+		<description><![CDATA[
+			Enables the HTML trim filter.  Supported values:
+			<ul>
+				<li><code>true</code> - (default) - Enabled</li>
+				<li><code>false</code> - Disabled</li>
+			</ul>
+		]]></description>
+		<param-name>com.aoindustries.servlet.filter.TrimFilter.enabled</param-name>
+		<param-value>@{com.aoindustries.servlet.filter.TrimFilter.enabled}</param-value>
 	</context-param>
 <!-- Include "web.xml.contextParams" -->
 
