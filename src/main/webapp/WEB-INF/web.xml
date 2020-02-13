@@ -54,8 +54,8 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 				<li><code>auto</code> - (default) - Automatically choose based on the client's <code>Accept</code> header</li>
 			</ul>
 		]]></description>
-		<param-name>com.aoindustries.html.Serialization.default</param-name>
-		<param-value>@{com.aoindustries.html.Serialization.default}</param-value>
+		<param-name>com.aoindustries.encoding.Serialization.default</param-name>
+		<param-value>@{com.aoindustries.encoding.Serialization.default}</param-value>
 	</context-param>
 	<context-param>
 		<description><![CDATA[
@@ -69,7 +69,7 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 				<li><code>default</code> - (default) - Use (X)HTML 5</li>
 			</ul>
 		]]></description>
-		<param-name>com.aoindustries.html.Doctype.default</param-name>
+		<param-name>com.aoindustries.encoding.Doctype.default</param-name>
 		<param-value>default</param-value>
 	</context-param>
 	<context-param>
