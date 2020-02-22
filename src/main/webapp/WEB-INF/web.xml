@@ -42,6 +42,32 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 	<display-name>@{project.name} @{project.version}</display-name>
 	<description>@{project.description}</description>
 	<context-param>
+		<description>Configuration for root AOServConnector</description>
+		<param-name>root.aoserv.client.username</param-name>
+		<param-value />
+	</context-param>
+	<context-param>
+		<description>Configuration for root AOServConnector</description>
+		<param-name>root.aoserv.client.password</param-name>
+		<param-value />
+	</context-param>
+	<context-param>
+		<description>
+			Configuration for Error Handlers.
+			Use true for development and false for production.
+		</description>
+		<param-name>exception.showError</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<description>
+			Enables the direct editing of resource bundles.
+			Use true for development and false for production.
+		</description>
+		<param-name>com.aoindustries.website.SiteSettings.canEditResources</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>com.aoindustries.website.SiteApplicationResources</param-value>
 	</context-param>
