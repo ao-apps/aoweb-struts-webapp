@@ -149,11 +149,13 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 	</session-config>
 
 	<welcome-file-list>
-		<!-- TODO: For apidocs compatibility, remove once docs integrated the new Maven way -->
 		<welcome-file>index.html</welcome-file>
-		<welcome-file>package-summary.html</welcome-file>
-		<!-- Remove this once we no longer use Struts -->
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jspx</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.do</welcome-file>
+		<!-- TODO: Still required?  Use elsewhere? -->
+		<welcome-file>package-summary.html</welcome-file>
 	</welcome-file-list>
 
 	<!-- Error Pages -->
