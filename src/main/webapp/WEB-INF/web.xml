@@ -98,17 +98,6 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<param-name>com.aoindustries.encoding.Doctype.default</param-name>
 		<param-value>default</param-value>
 	</context-param>
-	<context-param>
-		<description><![CDATA[
-			Enables the HTML trim filter.  Supported values:
-			<ul>
-				<li><code>true</code> - (default) - Enabled</li>
-				<li><code>false</code> - Disabled</li>
-			</ul>
-		]]></description>
-		<param-name>com.aoindustries.servlet.filter.TrimFilter.enabled</param-name>
-		<param-value>@{com.aoindustries.servlet.filter.TrimFilter.enabled}</param-value>
-	</context-param>
 <!-- Include "web.xml.contextParams" -->
 
 	<!-- Action Servlet Configuration -->

@@ -24,6 +24,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 
 <!-- META-INF/context.xml is used for local development deployment only -->
 <Context path="/aoweb-struts">
+
 	<Parameter
 		name="root.aoserv.client.username"
 		value="@{aoweb-struts-webapp.root.aoserv.client.username}"
@@ -44,4 +45,8 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		value="true"
 		override="false"
 	/>
+
+	<!-- Do not filter whitespace in development -->
+	<Parameter name="com.aoindustries.servlet.filter.TrimFilter.enabled" value="false" />
+
 </Context>
