@@ -35,18 +35,29 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		value="@{aoweb-struts-webapp.root.aoserv.client.password}"
 		override="false"
 	/>
+
 	<Parameter
-		name="exception.showError"
-		value="true"
-		override="false"
-	/>
-	<Parameter
-		name="com.aoindustries.website.SiteSettings.canEditResources"
-		value="true"
+		description="Display exceptions in the error handler"
+		name="exception.showError" value="true"
 		override="false"
 	/>
 
-	<!-- Do not filter whitespace in development -->
-	<Parameter name="com.aoindustries.servlet.filter.TrimFilter.enabled" value="false" />
+	<Parameter
+		description="Enable the direct editing of resource bundles"
+		name="com.aoindustries.website.SiteSettings.canEditResources" value="true"
+		override="false"
+	/>
+
+	<Parameter
+		description="XHTML enabled in development"
+		name="com.aoindustries.encoding.Serialization.default" value="auto"
+		override="false"
+	/>
+
+	<Parameter
+		description="Do not filter whitespace in development"
+		name="com.aoindustries.servlet.filter.TrimFilter.enabled" value="false"
+		override="false"
+	/>
 
 </Context>

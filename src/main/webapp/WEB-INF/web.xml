@@ -41,6 +41,7 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
   metadata-complete="false">
 	<display-name>@{project.name} @{project.version}</display-name>
 	<description>@{project.description}</description>
+
 	<context-param>
 		<description>Configuration for root AOServConnector</description>
 		<param-name>root.aoserv.client.username</param-name>
@@ -51,26 +52,12 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<param-name>root.aoserv.client.password</param-name>
 		<param-value />
 	</context-param>
-	<context-param>
-		<description>
-			Configuration for Error Handlers.
-			Use true for development and false for production.
-		</description>
-		<param-name>exception.showError</param-name>
-		<param-value>false</param-value>
-	</context-param>
-	<context-param>
-		<description>
-			Enables the direct editing of resource bundles.
-			Use true for development and false for production.
-		</description>
-		<param-name>com.aoindustries.website.SiteSettings.canEditResources</param-name>
-		<param-value>false</param-value>
-	</context-param>
+
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>com.aoindustries.website.SiteApplicationResources</param-value>
 	</context-param>
+
 	<context-param>
 		<description><![CDATA[
 			Controls the selection of HTML versus XHTML.  Supports three values:
@@ -81,8 +68,9 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 			</ul>
 		]]></description>
 		<param-name>com.aoindustries.encoding.Serialization.default</param-name>
-		<param-value>@{com.aoindustries.encoding.Serialization.default}</param-value>
+		<param-value>SGML</param-value>
 	</context-param>
+
 	<context-param>
 		<description><![CDATA[
 			Controls the default DOCTYPE for the application.  Supported values:
@@ -98,6 +86,7 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<param-name>com.aoindustries.encoding.Doctype.default</param-name>
 		<param-value>default</param-value>
 	</context-param>
+
 <!-- Include "web.xml.contextParams" -->
 
 	<!-- Action Servlet Configuration -->
@@ -141,7 +130,7 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-  
+
 <!-- Include "web.xml.servletMappingsPost" -->
 
 	<session-config>
@@ -171,4 +160,5 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/exception.do</location>
 	</error-page>
+
 </web-app>
