@@ -35,8 +35,6 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	<properties>
 		<!-- These values are copied from the project being documented -->
 		<documented.artifactId>aoweb-struts-webapp</documented.artifactId>
-		<documented.javaVersion>1.8</documented.javaVersion>
-		<documented.javac.link.javaApi>${javac.link.javaApi.jdk8}</documented.javac.link.javaApi>
 		<documented.name>AOWeb Struts Webapp</documented.name>
 		<documented.shortTitle>Webapp</documented.shortTitle>
 		<documented.description>Template webapp for legacy Struts-based site framework with AOServ Platform control panels.</documented.description>
