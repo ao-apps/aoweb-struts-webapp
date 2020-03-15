@@ -37,7 +37,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2020-03-07T06:01:29-0600"
+		dateModified="2020-03-15T00:27:10-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:aoweb-struts-webapp:pom.version}" />
@@ -64,6 +64,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 						This should eliminate validator warnings when used as HTML.
 					</li>
 					<li>Defaulting to doctype "STRICT" until converted to HTML 5.</li>
+					<li>Updated dependencies.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
