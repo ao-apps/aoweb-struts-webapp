@@ -52,6 +52,11 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<tag>HEAD</tag>
 	</scm>
 
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/aoindustries/aoweb-struts-webapp/issues</url>
+	</issueManagement>
+
 	<build>
 		<plugins>
 			<plugin>
