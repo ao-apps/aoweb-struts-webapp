@@ -59,16 +59,6 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	</issueManagement>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId><artifactId>versions-maven-plugin</artifactId><version>2.7</version>
-					<configuration>
-						<rulesUri>file://${project.basedir}/versions-rules.xml</rulesUri>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-war-plugin</artifactId>
@@ -90,6 +80,13 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 							<filtering>true</filtering>
 						</resource>
 					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId><artifactId>versions-maven-plugin</artifactId>
+				<inherited>false</inherited>
+				<configuration>
+					<rulesUri>file://${project.basedir}/versions-rules.xml</rulesUri>
 				</configuration>
 			</plugin>
 		</plugins>
