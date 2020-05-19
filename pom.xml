@@ -58,6 +58,18 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<url>https://github.com/aoindustries/aoweb-struts-webapp/issues</url>
 	</issueManagement>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId><artifactId>versions-maven-plugin</artifactId>
+				<inherited>false</inherited>
+				<configuration>
+					<rulesUri>file://${project.basedir}/versions-rules.xml</rulesUri>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<profiles>
 		<profile>
 			<id>release</id>
