@@ -161,4 +161,14 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<location>/exception.do</location>
 	</error-page>
 
+	<!-- No external resources:
+	<resource-ref />
+	-->
+
+	<!-- No security constraints:
+	<security-constraint />
+	<login-config />
+	<security-role />
+	-->
+
 </web-app>
