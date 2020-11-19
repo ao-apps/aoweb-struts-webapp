@@ -26,6 +26,8 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 %><%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"
 %><%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"
 %><%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"
+%><%-- AO Encoding Taglib
+--%><%@ taglib prefix="encoding" uri="https://aoindustries.com/ao-encoding/taglib/"
 %><%-- AO Taglib
 --%><%@ taglib prefix="ao" uri="https://aoindustries.com/ao-taglib/"
 %><%-- AOWeb Struts Core
@@ -34,7 +36,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 %><%-- Struts 1.3
 --%><%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean"
 %><%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"
-%><c:if test="${ao:getSerialization() == 'XML'}"><html:xhtml
+%><c:if test="${encoding:getSerialization() == 'XML'}"><html:xhtml
 /></c:if><%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"
 %><%@ taglib prefix="nested" uri="http://struts.apache.org/tags-nested"
 %><%-- SemanticCMS
