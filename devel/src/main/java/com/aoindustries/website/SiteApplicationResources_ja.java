@@ -1,6 +1,6 @@
 /*
  * aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
- * Copyright (C) 2009, 2016  AO Industries, Inc.
+ * Copyright (C) 2009, 2016, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,25 +23,18 @@
 package com.aoindustries.website;
 
 import com.aoindustries.util.i18n.EditableResourceBundle;
-import java.io.File;
 import java.util.Locale;
 
 /**
- * Provides a simplified interface for obtaining localized values from the ApplicationResources.properties files.
- * Is also an editable resource bundle.
- *
  * @author  AO Industries, Inc.
  */
 public final class SiteApplicationResources_ja extends EditableResourceBundle {
 
-	/**
-	 * Do not use directly.
-	 */
 	public SiteApplicationResources_ja() {
 		super(
 			Locale.JAPANESE,
 			SiteApplicationResources.bundleSet,
-			new File(System.getProperty("user.home")+"/maven2/ao/aoweb-struts/aoweb-struts-webapp/src/main/java/classes/com/aoindustries/website/SiteApplicationResources_ja.properties")
+			SiteApplicationResources.getSourceFile("SiteApplicationResources_ja.properties")
 		);
 	}
 }

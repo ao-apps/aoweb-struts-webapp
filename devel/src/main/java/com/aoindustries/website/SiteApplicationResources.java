@@ -1,6 +1,6 @@
 /*
  * aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
- * Copyright (C) 2009, 2016  AO Industries, Inc.
+ * Copyright (C) 2009, 2016, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,11 +22,9 @@
  */
 package com.aoindustries.website;
 
-import com.aoindustries.util.i18n.ApplicationResourcesAccessor;
 import com.aoindustries.util.i18n.EditableResourceBundle;
 import com.aoindustries.util.i18n.EditableResourceBundleSet;
 import java.io.File;
-import java.util.Arrays;
 import java.util.Locale;
 
 /**
@@ -35,23 +33,16 @@ import java.util.Locale;
 public final class SiteApplicationResources extends EditableResourceBundle {
 
 	static final EditableResourceBundleSet bundleSet = new EditableResourceBundleSet(
-		SiteApplicationResources.class.getName(),
-		Arrays.asList(
-			new Locale(""), // Locale.ROOT in Java 1.6
-			Locale.JAPANESE
-		)
+		SiteApplicationResources.class,
+		Locale.ROOT,
+		Locale.JAPANESE
 	);
 
-	/**
-	 * Do not use directly.
-	 */
-	public SiteApplicationResources() {
-		super(
-			new Locale(""),
-			bundleSet,
-			new File(System.getProperty("user.home")+"/maven2/ao/aoweb-struts/aoweb-struts-webapp/src/main/java/classes/com/aoindustries/website/SiteApplicationResources.properties")
-		);
+	static File getSourceFile(String filename) {
+		return new File(System.getProperty("user.home") + "/maven2/ao/aoweb-struts/webapp/src/main/resources/com/aoindustries/website", filename);
 	}
 
-	public static final ApplicationResourcesAccessor accessor = ApplicationResourcesAccessor.getInstance(bundleSet.getBaseName());
+	public SiteApplicationResources() {
+		super(Locale.ROOT, bundleSet, getSourceFile("SiteApplicationResources.properties"));
+	}
 }
