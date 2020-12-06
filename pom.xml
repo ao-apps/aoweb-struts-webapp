@@ -102,6 +102,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 					</usedDependencies>
 				</configuration>
 			</plugin>
+			<!-- TODO: Use install-file for pom and javadocs only? -->
 		</plugins>
 	</build>
 
