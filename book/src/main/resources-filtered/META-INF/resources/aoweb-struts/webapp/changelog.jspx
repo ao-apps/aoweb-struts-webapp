@@ -37,7 +37,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2020-12-03T07:02:36-06:00"
+		dateModified="2020-12-15T11:40:17-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -61,7 +61,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 					<li>Updated dependencies.</li>
 					<li>
 						Split development-only classes into a new sub-project in <code>devel/</code>.  This
-						sub-project is used development only and is never deployed to artifact repositories.
+						sub-project is used development for only and is never deployed to artifact repositories.
 					</li>
 				</ul>
 			</changelog:release>
