@@ -37,7 +37,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2021-01-02T14:19:55-06:00"
+		dateModified="2021-01-13T01:00:37-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -63,6 +63,8 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 						Split development-only classes into a new sub-project in <code>devel/</code>.  This
 						sub-project is used only for development and is never deployed to artifact repositories.
 					</li>
+					<li>Minimum Java EE version changed from 6 to 7.</li>
+					<li>Replaced VNC Java Applet+SSL with JavaScript+WebSocket.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

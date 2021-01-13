@@ -37,6 +37,9 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 / <a target="${javadoc.target}" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
 		<shortTitle>Webapp</shortTitle>
 		<description.html><![CDATA[Template webapp for legacy Struts-based site framework with <a target="${javadoc.target}" href="https://aoindustries.com/aoserv/">AOServ Platform</a> control panels.]]></description.html>
+		<!-- Java EE 7 required for websockets -->
+		<javaee.version>7</javaee.version>
+		<javadoc.link.javaee>${javadoc.link.javaee.7}</javadoc.link.javaee>
 	</properties>
 
 	<name>AOWeb Struts Webapp</name>
