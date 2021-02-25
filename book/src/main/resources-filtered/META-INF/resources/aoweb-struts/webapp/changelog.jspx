@@ -37,7 +37,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T22:40:31-0500"
-		dateModified="2021-01-13T01:00:37-06:00"
+		dateModified="2021-02-24T23:45:06-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -65,6 +65,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 					</li>
 					<li>Minimum Java EE version changed from 6 to 7.</li>
 					<li>Replaced VNC Java Applet+SSL with JavaScript+WebSocket.</li>
+					<li>Implemented tab indentation.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
