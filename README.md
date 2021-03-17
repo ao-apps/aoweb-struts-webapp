@@ -29,7 +29,6 @@ Template webapp for legacy Struts-based site framework with [AOServ Platform](ht
 ## Project Links
 * [Project Home](https://aoindustries.com/aoweb-struts/webapp/)
 * [Changelog](https://aoindustries.com/aoweb-struts/webapp/changelog)
-* [API Docs](https://aoindustries.com/aoweb-struts/webapp/apidocs/)
 * [Maven Central Repository](https://search.maven.org/artifact/com.aoindustries/aoweb-struts-webapp)
 * [GitHub](https://github.com/aoindustries/aoweb-struts-webapp)
 
