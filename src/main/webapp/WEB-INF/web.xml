@@ -67,7 +67,7 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 				<li><code>auto</code> - (default) - Automatically choose based on the client's <code>Accept</code> header</li>
 			</ul>
 		]]></description>
-		<param-name>com.aoindustries.encoding.Serialization.default</param-name>
+		<param-name>com.aoapps.encoding.Serialization.default</param-name>
 		<param-value>SGML</param-value>
 	</context-param>
 
@@ -83,7 +83,7 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 				<li><code>default</code> - (default) - Use (X)HTML 5</li>
 			</ul>
 		]]></description>
-		<param-name>com.aoindustries.encoding.Doctype.default</param-name>
+		<param-name>com.aoapps.encoding.Doctype.default</param-name>
 		<param-value>default</param-value>
 	</context-param>
 
