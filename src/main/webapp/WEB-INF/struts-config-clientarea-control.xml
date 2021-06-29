@@ -36,18 +36,18 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 <struts-config>
 	<!-- ========== Form Bean Definitions =================================== -->
 	<form-beans>
-		<form-bean name="cancelFeedbackForm" type="com.aoindustries.website.clientarea.control.account.CancelFeedbackForm" />
-		<form-bean name="passwordEvaluatorForm" type="com.aoindustries.website.clientarea.control.password.PasswordEvaluatorForm" />
-		<form-bean name="administratorPasswordSetterForm" type="com.aoindustries.website.clientarea.control.password.AdministratorPasswordSetterForm" />
-		<form-bean name="linuxAccountPasswordSetterForm" type="com.aoindustries.website.clientarea.control.password.LinuxAccountPasswordSetterForm" />
-		<form-bean name="mySQLPasswordSetterForm" type="com.aoindustries.website.clientarea.control.password.MySQLPasswordSetterForm" />
-		<form-bean name="postgreSQLPasswordSetterForm" type="com.aoindustries.website.clientarea.control.password.PostgreSQLPasswordSetterForm" />
-		<form-bean name="globalPasswordSetterForm" type="com.aoindustries.website.clientarea.control.password.GlobalPasswordSetterForm" />
+		<form-bean name="cancelFeedbackForm" type="com.aoindustries.web.struts.clientarea.control.account.CancelFeedbackForm" />
+		<form-bean name="passwordEvaluatorForm" type="com.aoindustries.web.struts.clientarea.control.password.PasswordEvaluatorForm" />
+		<form-bean name="administratorPasswordSetterForm" type="com.aoindustries.web.struts.clientarea.control.password.AdministratorPasswordSetterForm" />
+		<form-bean name="linuxAccountPasswordSetterForm" type="com.aoindustries.web.struts.clientarea.control.password.LinuxAccountPasswordSetterForm" />
+		<form-bean name="mySQLPasswordSetterForm" type="com.aoindustries.web.struts.clientarea.control.password.MySQLPasswordSetterForm" />
+		<form-bean name="postgreSQLPasswordSetterForm" type="com.aoindustries.web.struts.clientarea.control.password.PostgreSQLPasswordSetterForm" />
+		<form-bean name="globalPasswordSetterForm" type="com.aoindustries.web.struts.clientarea.control.password.GlobalPasswordSetterForm" />
 	</form-beans>
 
 	<!-- ========== Global Error Handlers =================================== -->
 	<global-exceptions>
-		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.website.ExceptionHandler" />
+		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.web.struts.ExceptionHandler" />
 	</global-exceptions>
 
 	<!-- ========== Global Forward Definitions ============================== -->
@@ -62,13 +62,13 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 	<action-mappings>
 		<action
 			path="/index"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/index.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/account/cancel"
-			type="com.aoindustries.website.clientarea.control.account.CancelAction"
+			type="com.aoindustries.web.struts.clientarea.control.account.CancelAction"
 		>
 			<forward name="permission-denied" path="/account/cancel.inc.jsp" redirect="false" />
 			<forward name="success" path="/account/cancel.inc.jsp" redirect="false" />
@@ -78,7 +78,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="cancelFeedbackForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.account.CancelFeedbackAction"
+			type="com.aoindustries.web.struts.clientarea.control.account.CancelFeedbackAction"
 		>
 			<forward name="permission-denied" path="/account/cancel-feedback.inc.jsp" redirect="false" />
 			<forward name="invalid-account" path="/account/cancel.do" redirect="true" />
@@ -89,7 +89,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="cancelFeedbackForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.account.CancelFeedbackCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.control.account.CancelFeedbackCompletedAction"
 		>
 			<forward name="permission-denied" path="/account/cancel-feedback-completed.inc.jsp" redirect="false" />
 			<forward name="invalid-account" path="/account/cancel.do" redirect="true" />
@@ -97,14 +97,14 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 		</action>
 		<action
 			path="/monitor/mysql-replication-monitor"
-			type="com.aoindustries.website.clientarea.control.monitor.MySQLReplicationMonitorAction"
+			type="com.aoindustries.web.struts.clientarea.control.monitor.MySQLReplicationMonitorAction"
 		>
 			<forward name="permission-denied" path="/monitor/mysql-replication-monitor.inc.jsp" redirect="false" />
 			<forward name="success" path="/monitor/mysql-replication-monitor.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/password/index"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/password/index.inc.jsp" redirect="false" />
 		</action>
@@ -113,7 +113,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="passwordEvaluatorForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/password/password-evaluator.inc.jsp" redirect="false" />
 		</action>
@@ -122,14 +122,14 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="passwordEvaluatorForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.PasswordEvaluatorCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.PasswordEvaluatorCompletedAction"
 		>
 			<forward name="input" path="/password/password-evaluator.inc.jsp" redirect="false" />
 			<forward name="success" path="/password/password-evaluator.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/password/password-generator"
-			type="com.aoindustries.website.clientarea.control.password.PasswordGeneratorAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.PasswordGeneratorAction"
 		>
 			<forward name="success" path="/password/password-generator.inc.jsp" redirect="false" />
 		</action>
@@ -138,7 +138,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="administratorPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.AdministratorPasswordSetterAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.AdministratorPasswordSetterAction"
 		>
 			<forward name="success" path="/password/administrator-password-setter.inc.jsp" redirect="false" />
 		</action>
@@ -147,7 +147,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="administratorPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.AdministratorPasswordSetterCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.AdministratorPasswordSetterCompletedAction"
 		>
 			<forward name="input" path="/password/administrator-password-setter.inc.jsp" redirect="false" />
 			<forward name="success" path="/password/administrator-password-setter.inc.jsp" redirect="false" />
@@ -157,7 +157,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="linuxAccountPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.LinuxAccountPasswordSetterAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.LinuxAccountPasswordSetterAction"
 		>
 			<forward name="permission-denied" path="/password/linux-account-password-setter.inc.jsp" redirect="false" />
 			<forward name="success" path="/password/linux-account-password-setter.inc.jsp" redirect="false" />
@@ -167,7 +167,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="linuxAccountPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.LinuxAccountPasswordSetterCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.LinuxAccountPasswordSetterCompletedAction"
 		>
 			<forward name="permission-denied" path="/password/linux-account-password-setter.inc.jsp" redirect="false" />
 			<forward name="input" path="/password/linux-account-password-setter.inc.jsp" redirect="false" />
@@ -178,7 +178,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="mySQLPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.MySQLPasswordSetterAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.MySQLPasswordSetterAction"
 		>
 			<forward name="permission-denied" path="/password/mysql-password-setter.inc.jsp" redirect="false" />
 			<forward name="success" path="/password/mysql-password-setter.inc.jsp" redirect="false" />
@@ -188,7 +188,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="mySQLPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.MySQLPasswordSetterCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.MySQLPasswordSetterCompletedAction"
 		>
 			<forward name="input" path="/password/mysql-password-setter.inc.jsp" redirect="false" />
 			<forward name="permission-denied" path="/password/mysql-password-setter.inc.jsp" redirect="false" />
@@ -199,7 +199,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="postgreSQLPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.PostgreSQLPasswordSetterAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.PostgreSQLPasswordSetterAction"
 		>
 			<forward name="permission-denied" path="/password/postgresql-password-setter.inc.jsp" redirect="false" />
 			<forward name="success" path="/password/postgresql-password-setter.inc.jsp" redirect="false" />
@@ -209,7 +209,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="postgreSQLPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.PostgreSQLPasswordSetterCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.PostgreSQLPasswordSetterCompletedAction"
 		>
 			<forward name="permission-denied" path="/password/postgresql-password-setter.inc.jsp" redirect="false" />
 			<forward name="input" path="/password/postgresql-password-setter.inc.jsp" redirect="false" />
@@ -220,7 +220,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="globalPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.GlobalPasswordSetterAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.GlobalPasswordSetterAction"
 		>
 			<forward name="permission-denied" path="/password/global-password-setter.inc.jsp" redirect="false" />
 			<forward name="success" path="/password/global-password-setter.inc.jsp" redirect="false" />
@@ -230,7 +230,7 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 			name="globalPasswordSetterForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.control.password.GlobalPasswordSetterCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.control.password.GlobalPasswordSetterCompletedAction"
 		>
 			<forward name="permission-denied" path="/password/global-password-setter.inc.jsp" redirect="false" />
 			<forward name="input" path="/password/global-password-setter.inc.jsp" redirect="false" />
@@ -238,14 +238,14 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 		</action>
 		<action
 			path="/vnc/vnc-console"
-			type="com.aoindustries.website.clientarea.control.vnc.VncConsoleAction"
+			type="com.aoindustries.web.struts.clientarea.control.vnc.VncConsoleAction"
 		>
 			<forward name="permission-denied" path="/vnc/vnc-console.inc.jsp" redirect="false" />
 			<forward name="success" path="/vnc/vnc-console.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/**"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" module="" path="/not-found.inc.jsp" redirect="false" />
 		</action>
@@ -258,48 +258,48 @@ struts-config-clientarea-control.xml.messageResources Additional message resourc
 
 	<!-- ========== Message Resources ======================================= -->
 	<message-resources
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.SiteApplicationResources"
-		null="false"
-	/>
-	<message-resources
 		key="/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/accounting/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.accounting.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.accounting.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/control/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.control.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.control.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ticket/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ticket.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.ticket.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/webmail/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.webmail.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.webmail.i18n.ApplicationResources"
 		null="false"
 	/>
-
-<!-- Include "struts-config-clientarea-control.xml.messageResources" -->
+<!-- Begin include "struts-config-clientarea-control.xml.messageResources" -->
+	<message-resources
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.webapp.i18n.ApplicationResources"
+		null="false"
+	/>
+<!-- End include "struts-config-clientarea-control.xml.messageResources" -->
 
 	<!-- ========== Validator Plug-In ======================================= -->
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">

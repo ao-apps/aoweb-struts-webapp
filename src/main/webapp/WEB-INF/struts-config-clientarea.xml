@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
-Copyright (C) 2009, 2016  AO Industries, Inc.
+Copyright (C) 2009, 2016, 2021  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -40,7 +40,7 @@ struts-config-clientarea.xml.messageResources Additional message resources
 
 	<!-- ========== Global Error Handlers =================================== -->
 	<global-exceptions>
-		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.website.ExceptionHandler" />
+		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.web.struts.ExceptionHandler" />
 	</global-exceptions>
 
 	<!-- ========== Global Forward Definitions ============================== -->
@@ -56,13 +56,13 @@ struts-config-clientarea.xml.messageResources Additional message resources
 	<action-mappings>
 		<action
 			path="/index"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/index.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/**"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" module="" path="/not-found.inc.jsp" redirect="false" />
 		</action>
@@ -75,48 +75,48 @@ struts-config-clientarea.xml.messageResources Additional message resources
 
 	<!-- ========== Message Resources ======================================= -->
 	<message-resources
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.SiteApplicationResources"
-		null="false"
-	/>
-	<message-resources
 		key="/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/accounting/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.accounting.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.accounting.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/control/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.control.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.control.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ticket/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ticket.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.ticket.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/webmail/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.webmail.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.webmail.i18n.ApplicationResources"
 		null="false"
 	/>
-
-<!-- Include "struts-config-clientarea.xml.messageResources" -->
+<!-- Begin include "struts-config-clientarea.xml.messageResources" -->
+	<message-resources
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.webapp.i18n.ApplicationResources"
+		null="false"
+	/>
+<!-- End include "struts-config-clientarea.xml.messageResources" -->
 
 	<!-- ========== Validator Plug-In ======================================= -->
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">

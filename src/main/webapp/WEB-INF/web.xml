@@ -54,11 +54,6 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 	</context-param>
 
 	<context-param>
-		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-		<param-value>com.aoindustries.website.SiteApplicationResources</param-value>
-	</context-param>
-
-	<context-param>
 		<description><![CDATA[
 			Controls the selection of HTML versus XHTML.  Supports three values:
 			<ul>
@@ -87,7 +82,12 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<param-value>default</param-value>
 	</context-param>
 
-<!-- Include "web.xml.contextParams" -->
+<!-- Begin include "web.xml.contextParams" -->
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>com.aoindustries.web.struts.webapp.i18n.ApplicationResources</param-value>
+	</context-param>
+<!-- End include "web.xml.contextParams" -->
 
 	<!-- Action Servlet Configuration -->
 	<servlet>
@@ -117,13 +117,16 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 			<param-name>config/signup</param-name>
 			<param-value>/WEB-INF/struts-config-signup.xml</param-value>
 		</init-param>
-<!-- Include "web.xml.strutsInitParams" -->
+<!-- Begin include "web.xml.strutsInitParams" -->
+<!-- End include "web.xml.strutsInitParams" -->
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 
-<!-- Include "web.xml.servlets" -->
+<!-- Begin include "web.xml.servlets" -->
+<!-- End include "web.xml.servlets" -->
 
-<!-- Include "web.xml.servletMappingsPre" -->
+<!-- Begin include "web.xml.servletMappingsPre" -->
+<!-- End include "web.xml.servletMappingsPre" -->
 
 	<!-- Action Servlet Mapping -->
 	<servlet-mapping>
@@ -131,7 +134,8 @@ web.xml.servletMappingsPost   Servlet mappings placed after the Struts mappings
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
-<!-- Include "web.xml.servletMappingsPost" -->
+<!-- Begin include "web.xml.servletMappingsPost" -->
+<!-- End include "web.xml.servletMappingsPost" -->
 
 	<session-config>
 		<session-timeout>61</session-timeout>

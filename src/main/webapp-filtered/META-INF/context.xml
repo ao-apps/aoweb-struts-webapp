@@ -44,7 +44,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 
 	<Parameter
 		description="Enable the direct editing of resource bundles"
-		name="com.aoindustries.website.SiteSettings.canEditResources" value="true"
+		name="com.aoindustries.web.struts.SiteSettings.canEditResources" value="true"
 		override="false"
 	/>
 

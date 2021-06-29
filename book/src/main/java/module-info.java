@@ -1,6 +1,6 @@
 /*
  * aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
- * Copyright (C) 2009, 2016, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,21 +20,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.website;
-
-import com.aoapps.hodgepodge.i18n.EditableResourceBundle;
-import java.util.Locale;
-
-/**
- * @author  AO Industries, Inc.
- */
-public final class SiteApplicationResources_ja extends EditableResourceBundle {
-
-	public SiteApplicationResources_ja() {
-		super(
-			Locale.JAPANESE,
-			SiteApplicationResources.bundleSet,
-			SiteApplicationResources.getSourceFile("SiteApplicationResources_ja.properties")
-		);
-	}
+module com.aoindustries.web.struts.webapp.book {
+	// Direct
+	requires com.aoapps.badges; // <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId>
+	requires com.aoapps.taglib; // <groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId>
+	requires com.semanticcms.changelog.taglib; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-changelog-taglib</artifactId>
+	requires com.semanticcms.core.taglib; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId>
+	requires com.semanticcms.section.taglib; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-section-taglib</artifactId>
+	requires taglibs.standard.spec; // <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId>
 }

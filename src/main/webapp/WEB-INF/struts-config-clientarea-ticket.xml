@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
-Copyright (C) 2009, 2016  AO Industries, Inc.
+Copyright (C) 2009, 2016, 2021  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -36,12 +36,12 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 <struts-config>
 	<!-- ========== Form Bean Definitions =================================== -->
 	<form-beans>
-		<form-bean name="ticketForm" type="com.aoindustries.website.clientarea.ticket.TicketForm" />
+		<form-bean name="ticketForm" type="com.aoindustries.web.struts.clientarea.ticket.TicketForm" />
 	</form-beans>
 
 	<!-- ========== Global Error Handlers =================================== -->
 	<global-exceptions>
-		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.website.ExceptionHandler" />
+		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.web.struts.ExceptionHandler" />
 	</global-exceptions>
 
 	<!-- ========== Global Forward Definitions ============================== -->
@@ -56,7 +56,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 	<action-mappings>
 		<action
 			path="/index"
-			type="com.aoindustries.website.clientarea.ticket.IndexAction"
+			type="com.aoindustries.web.struts.clientarea.ticket.IndexAction"
 		>
 			<forward name="success" path="/index.inc.jsp" redirect="false" />
 		</action>
@@ -65,7 +65,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			name="ticketForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.ticket.CreateAction"
+			type="com.aoindustries.web.struts.clientarea.ticket.CreateAction"
 		>
 			<forward name="permission-denied" path="/create.inc.jsp" redirect="false" />
 			<forward name="success" path="/create.inc.jsp" redirect="false" />
@@ -75,7 +75,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			name="ticketForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.ticket.CreateCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.ticket.CreateCompletedAction"
 		>
 			<forward name="permission-denied" path="/create.inc.jsp" redirect="false" />
 			<forward name="input" path="/create.inc.jsp" redirect="false" />
@@ -86,7 +86,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			name="ticketForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.ticket.EditAction"
+			type="com.aoindustries.web.struts.clientarea.ticket.EditAction"
 		>
 			<forward name="permission-denied" path="/edit.inc.jsp" redirect="false" />
 			<forward name="success" path="/edit.inc.jsp" redirect="false" />
@@ -96,7 +96,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 			name="ticketForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.clientarea.ticket.EditCompletedAction"
+			type="com.aoindustries.web.struts.clientarea.ticket.EditCompletedAction"
 		>
 			<forward name="permission-denied" path="/edit.inc.jsp" redirect="false" />
 			<forward name="input" path="/edit.inc.jsp" redirect="false" />
@@ -105,7 +105,7 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 		</action>
 		<action
 			path="/**"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" module="" path="/not-found.inc.jsp" redirect="false" />
 		</action>
@@ -118,48 +118,48 @@ struts-config-clientarea-ticket.xml.messageResources Additional message resource
 
 	<!-- ========== Message Resources ======================================= -->
 	<message-resources
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.SiteApplicationResources"
-		null="false"
-	/>
-	<message-resources
 		key="/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/accounting/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.accounting.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.accounting.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/control/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.control.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.control.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ticket/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ticket.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.ticket.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/webmail/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.webmail.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.webmail.i18n.ApplicationResources"
 		null="false"
 	/>
-
-<!-- Include "struts-config-clientarea-ticket.xml.messageResources" -->
+<!-- Begin include "struts-config-clientarea-ticket.xml.messageResources" -->
+	<message-resources
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.webapp.i18n.ApplicationResources"
+		null="false"
+	/>
+<!-- End include "struts-config-clientarea-ticket.xml.messageResources" -->
 
 	<!-- ========== Validator Plug-In ======================================= -->
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">

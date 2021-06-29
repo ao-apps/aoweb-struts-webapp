@@ -33,6 +33,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	<packaging>war</packaging>
 
 	<properties>
+		<module.name>com.aoindustries.web.struts.webapp</module.name>
 		<description.html><![CDATA[Template webapp for legacy Struts-based site framework with <a target="${javadoc.target}" href="https://aoindustries.com/aoserv/">AOServ Platform</a> control panels.]]></description.html>
 		<!-- TODO: Remove once moved to oss.aoapps.com -->
 		<google.analytics.trackingId>UA-86871646-1</google.analytics.trackingId>
@@ -100,7 +101,6 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<configuration>
 					<usedDependencies>
 						<!-- JSP Only -->
-						<dependency>com.aoapps:ao-encoding-taglib</dependency>
 						<dependency>com.aoapps:ao-taglib</dependency>
 						<dependency>com.aoindustries:aoweb-struts-core</dependency>
 						<dependency>com.aoindustries:aoweb-struts-resources</dependency>
@@ -114,11 +114,162 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 						<dependency>org.apache.struts:struts-core</dependency>
 						<dependency>org.apache.taglibs:taglibs-standard-impl</dependency>
 					</usedDependencies>
+					<ignoredDependencies>
+						<!-- No "module-info.java" in some release builds -->
+						<dependency>com.aoapps:ao-collections</dependency>
+						<dependency>com.aoapps:ao-encoding-taglib</dependency>
+					</ignoredDependencies>
 				</configuration>
 			</plugin>
 			<!-- TODO: Use install-file for pom and javadocs only? -->
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<!-- Features only enabled during development time -->
+			<id>development</id>
+			<dependencies>
+				<!-- Own -devel package -->
+				<dependency>
+					<groupId>com.aoindustries</groupId><artifactId>aoweb-struts-webapp-devel</artifactId><version>3.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!--
+					*-devel packages for all dependencies except tests (direct, runtime, transitive, and BOM)
+				-->
+				<!-- Direct -->
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-encoding-taglib-devel</artifactId><version>2.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-taglib-devel</artifactId><version>7.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.aoindustries</groupId><artifactId>aoweb-struts-core-devel</artifactId><version>3.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>com.aoindustries</groupId><artifactId>aoweb-struts-resources-devel</artifactId> -->
+				<dependency>
+					<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>1.15.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>org.apache.struts</groupId><artifactId>struts-taglib-devel</artifactId> -->
+				<!-- No -devel: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec-devel</artifactId> -->
+				<!-- Transitive -->
+				<!-- No -devel: <groupId>javax.activation</groupId><artifactId>activation-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-collections-devel</artifactId> -->
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-encoding-devel</artifactId><version>5.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-encoding-servlet-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-devel</artifactId> -->
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any-devel</artifactId><version>0.5.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-servlet-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-util-devel</artifactId> -->
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-hodgepodge-devel</artifactId><version>5.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-io-buffer-devel</artifactId> -->
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-lang-devel</artifactId><version>5.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-net-types-devel</artifactId><version>2.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-payments-api-devel</artifactId><version>2.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-security-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-servlet-last-modified-devel</artifactId> -->
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-servlet-util-devel</artifactId><version>4.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.aoapps</groupId><artifactId>ao-sql-devel</artifactId><version>2.0.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-style-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-tempfiles-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-tempfiles-servlet-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-tlds-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-web-resources-registry-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-web-resources-renderer-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-web-resources-servlet-devel</artifactId> -->
+				<dependency>
+					<groupId>com.aoindustries</groupId><artifactId>aoserv-client-devel</artifactId><version>1.84.22-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>com.aoindustries</groupId><artifactId>aoserv-credit-cards-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoindustries</groupId><artifactId>aoserv-daemon-client-devel</artifactId> -->
+				<!-- No -devel: <groupId>commons-beanutils</groupId><artifactId>commons-beanutils-devel</artifactId> -->
+				<!-- No -devel: <groupId>commons-collections</groupId><artifactId>commons-collections-devel</artifactId> -->
+				<!-- No -devel: <groupId>commons-digester</groupId><artifactId>commons-digester-devel</artifactId> -->
+				<!-- No -devel: <groupId>org.apache.commons</groupId><artifactId>commons-lang3-devel</artifactId> -->
+				<!-- No -devel: <groupId>commons-logging</groupId><artifactId>commons-logging-devel</artifactId> -->
+				<!-- No -devel: <groupId>commons-validator</groupId><artifactId>commons-validator-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.sun.mail</groupId><artifactId>javax.mail-devel</artifactId> -->
+				<!-- No -devel: <groupId>joda-time</groupId><artifactId>joda-time-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model-devel</artifactId> -->
+				<!-- Runtime Direct -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-mime-mappings-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-servlet-filter-devel</artifactId> -->
+				<dependency>
+					<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet-devel</artifactId><version>1.18.0-SNAPSHOT</version>
+					<scope>runtime</scope>
+				</dependency>
+				<!-- No -devel: <groupId>org.apache.struts</groupId><artifactId>struts-core-devel</artifactId> -->
+				<!-- No -devel: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-impl-devel</artifactId> -->
+				<!-- Runtime Transitive -->
+				<!-- No -devel: <groupId>antlr</groupId><artifactId>antlr-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-concurrent-devel</artifactId> -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-servlet-subrequest-devel</artifactId> -->
+				<!-- No -devel: <groupId>commons-chain</groupId><artifactId>commons-chain-devel</artifactId> -->
+				<!-- No -devel: <groupId>oro</groupId><artifactId>oro-devel</artifactId> -->
+				<!-- BOM -->
+				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>javaee-web-api-bom-devel</artifactId> -->
+			</dependencies>
+		</profile>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<!--
+								Releases use "Automatic-Module-Name" instead of "module-info.java"
+								since has direct dependencies that are not yet modularized.
+							-->
+							<archive>
+								<manifestEntries>
+									<Automatic-Module-Name>${module.name}</Automatic-Module-Name>
+								</manifestEntries>
+							</archive>
+							<packagingExcludes>
+								<!-- META-INF/context.xml is used for local development deployment only -->
+								META-INF/context.xml,
+								WEB-INF/classes/module-info.class
+							</packagingExcludes>
+							<!-- There is no way to exclude module-info.class from secondary artifact, just don't attach -->
+							<attachClasses>false</attachClasses>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<dependencyManagement>
 		<dependencies>

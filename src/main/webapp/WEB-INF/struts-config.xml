@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 aoweb-struts-webapp - Template webapp for legacy Struts-based site framework with AOServ Platform control panels.
-Copyright (C) 2009, 2016  AO Industries, Inc.
+Copyright (C) 2009, 2016, 2021  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -38,13 +38,13 @@ struts-config.xml.messageResources    Additional message resources
 	<!-- ========== Form Bean Definitions =================================== -->
 	<form-beans>
 		<!-- / -->
-		<form-bean name="contactForm" type="com.aoindustries.website.ContactForm" />
-		<form-bean name="loginForm" type="com.aoindustries.website.LoginForm" />
+		<form-bean name="contactForm" type="com.aoindustries.web.struts.ContactForm" />
+		<form-bean name="loginForm" type="com.aoindustries.web.struts.LoginForm" />
 	</form-beans>
 
 	<!-- ========== Global Error Handlers =================================== -->
 	<global-exceptions>
-		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.website.ExceptionHandler" />
+		<exception key="Exception.message" type="java.lang.Exception" handler="com.aoindustries.web.struts.ExceptionHandler" />
 	</global-exceptions>
 
 	<!-- ========== Global Forward Definitions ============================== -->
@@ -60,13 +60,13 @@ struts-config.xml.messageResources    Additional message resources
 		<!-- =============== Common =============== -->
 		<action
 			path="/exception"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/exception.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/not-found"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/not-found.inc.jsp" redirect="false" />
 		</action>
@@ -75,7 +75,7 @@ struts-config.xml.messageResources    Additional message resources
 			name="contactForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/contact.inc.jsp" redirect="false" />
 		</action>
@@ -84,7 +84,7 @@ struts-config.xml.messageResources    Additional message resources
 			name="contactForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.ContactCompletedAction"
+			type="com.aoindustries.web.struts.ContactCompletedAction"
 		>
 			<forward name="input" path="/contact.inc.jsp" redirect="false" />
 			<forward name="success" path="/contact-completed.inc.jsp" redirect="false" />
@@ -94,7 +94,7 @@ struts-config.xml.messageResources    Additional message resources
 			name="loginForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.LoginAction"
+			type="com.aoindustries.web.struts.LoginAction"
 		>
 			<forward name="success" path="/login.inc.jsp" redirect="false" />
 		</action>
@@ -103,7 +103,7 @@ struts-config.xml.messageResources    Additional message resources
 			name="loginForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.LoginCompletedAction"
+			type="com.aoindustries.web.struts.LoginCompletedAction"
 		>
 			<forward name="input" path="/login.inc.jsp" redirect="false" />
 			<!-- Redirect done directly from Action now: forward name="success" path="/clientarea/index.do" redirect="true" /-->
@@ -111,33 +111,34 @@ struts-config.xml.messageResources    Additional message resources
 		</action>
 		<action
 			path="/permission-denied"
-			type="com.aoindustries.website.PermissionDeniedAction"
+			type="com.aoindustries.web.struts.PermissionDeniedAction"
 		/>
 		<action
 			path="/session-timeout"
 			name="loginForm"
 			scope="request"
 			validate="false"
-			type="com.aoindustries.website.SessionTimeoutAction"
+			type="com.aoindustries.web.struts.SessionTimeoutAction"
 		>
 			<forward name="success" path="/login.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/set-resource-bundle-value"
-			type="com.aoindustries.website.SetResourceBundleValueAction"
+			type="com.aoindustries.web.struts.SetResourceBundleValueAction"
 		>
 			<forward name="success" path="/set-resource-bundle-value.inc.jsp" redirect="false" />
 		</action>
 		<action
 			path="/logout"
-			type="com.aoindustries.website.LogoutAction"
+			type="com.aoindustries.web.struts.LogoutAction"
 		>
 			<forward name="success" path="/logout.inc.jsp" redirect="false" />
 		</action>
-<!-- Include "struts-config.xml.actions" -->
+<!-- Begin include "struts-config.xml.actions" -->
+<!-- End include "struts-config.xml.actions" -->
 		<action
 			path="/**"
-			type="com.aoindustries.website.SkinAction"
+			type="com.aoindustries.web.struts.SkinAction"
 		>
 			<forward name="success" path="/not-found.inc.jsp" redirect="false" />
 		</action>
@@ -150,48 +151,48 @@ struts-config.xml.messageResources    Additional message resources
 
 	<!-- ========== Message Resources ======================================= -->
 	<message-resources
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.SiteApplicationResources"
-		null="false"
-	/>
-	<message-resources
 		key="/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/accounting/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.accounting.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.accounting.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/control/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.control.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.control.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/ticket/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.ticket.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.ticket.i18n.ApplicationResources"
 		null="false"
 	/>
 	<message-resources
 		key="/clientarea/webmail/ApplicationResources"
-		factory="com.aoindustries.website.struts.ResourceBundleMessageResourcesFactory"
-		parameter="com.aoindustries.website.clientarea.webmail.ApplicationResources"
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.clientarea.webmail.i18n.ApplicationResources"
 		null="false"
 	/>
-
-<!-- Include "struts-config.xml.messageResources" -->
+<!-- Begin include "struts-config.xml.messageResources" -->
+	<message-resources
+		factory="com.aoindustries.web.struts.struts.ResourceBundleMessageResourcesFactory"
+		parameter="com.aoindustries.web.struts.webapp.i18n.ApplicationResources"
+		null="false"
+	/>
+<!-- End include "struts-config.xml.messageResources" -->
 
 	<!-- ========== Validator Plug-In ======================================= -->
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
