@@ -162,7 +162,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<!-- No -devel: <groupId>javax.activation</groupId><artifactId>activation-devel</artifactId> -->
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-collections-devel</artifactId> -->
 				<dependency>
-					<groupId>com.aoapps</groupId><artifactId>ao-encoding-devel</artifactId><version>5.0.0-SNAPSHOT</version>
+					<groupId>com.aoapps</groupId><artifactId>ao-encoding-devel</artifactId><version>5.0.0-POST-SNAPSHOT</version>
 					<scope>runtime</scope>
 				</dependency>
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-encoding-servlet-devel</artifactId> -->
@@ -301,7 +301,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId><version>5.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+				<groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId><version>5.0.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-encoding-servlet</artifactId><version>4.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
