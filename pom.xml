@@ -140,7 +140,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				</dependency>
 				<!-- No -devel: <groupId>com.aoindustries</groupId><artifactId>aoweb-struts-resources-devel</artifactId> -->
 				<dependency>
-					<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>1.15.0-SNAPSHOT</version>
+					<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>1.15.0-POST-SNAPSHOT</version>
 					<scope>runtime</scope>
 				</dependency>
 				<!-- No -devel: <groupId>org.apache.struts</groupId><artifactId>struts-taglib-devel</artifactId> -->
@@ -274,7 +274,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<groupId>com.aoindustries</groupId><artifactId>aoweb-struts-resources</artifactId><version>3.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
-				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>1.15.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+				<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>1.15.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.struts</groupId><artifactId>struts-taglib</artifactId><version>1.3.10</version>
