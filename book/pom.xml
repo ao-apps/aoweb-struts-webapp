@@ -86,6 +86,11 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 		<url>https://github.com/aoindustries/aoweb-struts-webapp/issues</url>
 	</issueManagement>
 
+	<ciManagement>
+		<system>GitHub Actions</system>
+		<url>https://github.com/aoindustries/aoweb-struts-webapp/actions</url>
+	</ciManagement>
+
 	<repositories>
 		<!-- Repository required here, too, so can find parent -->
 		<repository>
