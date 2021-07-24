@@ -35,7 +35,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 	<properties>
 		<module.name>com.aoindustries.web.struts.webapp</module.name>
 		<description.html><![CDATA[Template webapp for legacy Struts-based site framework with <a target="${javadoc.target}" href="https://aoindustries.com/aoserv/">AOServ Platform</a> control panels.]]></description.html>
-		<!-- TODO: Remove once moved to oss.aoapps.com -->
+		<!-- TODO: Remove once moved to platform.aoapps.com -->
 		<google.analytics.trackingId>UA-86871646-1</google.analytics.trackingId>
 		<!-- com.aoindustries is on original Sonatype Nexus Repository Manager -->
 		<nexusUrl>https://oss.sonatype.org/</nexusUrl>
@@ -219,7 +219,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-web-resources-renderer-devel</artifactId> -->
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-web-resources-servlet-devel</artifactId> -->
 				<dependency>
-					<groupId>com.aoindustries</groupId><artifactId>aoserv-client-devel</artifactId><version>1.84.22-SNAPSHOT</version>
+					<groupId>com.aoindustries</groupId><artifactId>aoserv-client-devel</artifactId><version>1.85.0-POST-SNAPSHOT</version>
 					<scope>runtime</scope>
 				</dependency>
 				<!-- No -devel: <groupId>com.aoindustries</groupId><artifactId>aoserv-credit-cards-devel</artifactId> -->
@@ -378,13 +378,13 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<groupId>com.aoapps</groupId><artifactId>ao-web-resources-servlet</artifactId><version>0.4.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>aoserv-client</artifactId><version>1.84.22-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+				<groupId>com.aoindustries</groupId><artifactId>aoserv-client</artifactId><version>1.85.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>aoserv-credit-cards</artifactId><version>2.2.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+				<groupId>com.aoindustries</groupId><artifactId>aoserv-credit-cards</artifactId><version>2.2.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>aoserv-daemon-client</artifactId><version>1.84.22-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+				<groupId>com.aoindustries</groupId><artifactId>aoserv-daemon-client</artifactId><version>1.85.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-beanutils</groupId><artifactId>commons-beanutils</artifactId><version>1.9.4</version>
