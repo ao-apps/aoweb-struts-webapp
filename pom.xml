@@ -173,13 +173,13 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<!-- No -devel: <groupId>javax.activation</groupId><artifactId>activation-devel</artifactId> -->
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-collections-devel</artifactId> -->
 				<dependency>
-					<groupId>com.aoapps</groupId><artifactId>ao-encoding-devel</artifactId><version>5.0.0-POST-SNAPSHOT</version>
+					<groupId>com.aoapps</groupId><artifactId>ao-encoding-devel</artifactId><version>5.0.1-SNAPSHOT</version>
 					<scope>runtime</scope>
 				</dependency>
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-encoding-servlet-devel</artifactId> -->
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-devel</artifactId> -->
 				<dependency>
-					<groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any-devel</artifactId><version>0.5.0-POST-SNAPSHOT</version>
+					<groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any-devel</artifactId><version>0.5.1-SNAPSHOT</version>
 					<scope>runtime</scope>
 				</dependency>
 				<!-- No -devel: <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-servlet-devel</artifactId> -->
@@ -312,7 +312,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId><version>5.0.0${POST-SNAPSHOT}</version>
+				<groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId><version>5.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-encoding-servlet</artifactId><version>4.0.0${POST-SNAPSHOT}</version>
@@ -321,7 +321,7 @@ along with aoweb-struts-webapp.  If not, see <http://www.gnu.org/licenses />.
 				<groupId>com.aoapps</groupId><artifactId>ao-fluent-html</artifactId><version>0.5.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId><version>0.5.0${POST-SNAPSHOT}</version>
+				<groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId><version>0.5.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-fluent-html-servlet</artifactId><version>0.5.0${POST-SNAPSHOT}</version>
